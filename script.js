@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   blocks.forEach((block, index) => {
     block.style.transform = `translateX(${index === currentIndex ? 0 : 100}%)`
+    if (index !== currentIndex) block.style.visibility = 'collapse'
+    block.style.visibility = 'visible'
   })
 
   container.addEventListener('mousedown', startDrag)
@@ -97,6 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
     container.removeEventListener('touchmove', onDrag)
     container.removeEventListener('mouseup', endDrag)
     container.removeEventListener('touchend', endDrag)
+  }
+
+  function adjustContainerHeight() {
+    container.style.height = `${blocks[currentIndex].scrollHeight}px`
   }
 })
 
