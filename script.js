@@ -100,10 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     container.removeEventListener('mouseup', endDrag)
     container.removeEventListener('touchend', endDrag)
   }
-
-  function adjustContainerHeight() {
-    container.style.height = `${blocks[currentIndex].scrollHeight}px`
-  }
 })
 
 moneyTransferForm.querySelector('select').addEventListener('change', (el) => {
