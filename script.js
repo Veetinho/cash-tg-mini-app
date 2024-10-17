@@ -87,10 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
       blocks[currentIndex].style.transform = 'translateX(-100%)'
       currentIndex++
       blocks[currentIndex].style.transform = 'translateX(0)'
+      blocks[currentIndex].scrollTo({ top: 0, behavior: 'smooth' })
     } else if (deltaX > 100 && currentIndex > 0) {
       blocks[currentIndex].style.transform = 'translateX(100%)'
       currentIndex--
       blocks[currentIndex].style.transform = 'translateX(0)'
+      blocks[currentIndex].scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       blocks[currentIndex].style.transform = 'translateX(0)'
     }
