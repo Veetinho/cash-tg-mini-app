@@ -32,8 +32,8 @@ const moneyApplicationData = [
 ]
 
 const userInfo = {
-  name: 'Vitalii Vykhrystiuk',
-  card: 'Vykhrystiuk 4619',
+  name: 'Test User',
+  card: 'User 4619',
 }
 
 const _ = (id) => document.getElementById(id)
