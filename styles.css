@@ -26,19 +26,40 @@ label:has(+ [required])::after {
   overflow: hidden;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
+
 #moneyTransferForm.open {
   max-height: 600px;
   opacity: 1;
 }
 
-.dm-serif-display-regular {
-  font-family: 'DM Serif Display', serif;
-  font-weight: 400;
-  font-style: normal;
+/* swipe */
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
 }
 
-.dm-serif-display-regular-italic {
-  font-family: 'DM Serif Display', serif;
-  font-weight: 400;
-  font-style: italic;
+.circle {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  animation: swoop 2s ease-in-out infinite;
+}
+
+@keyframes swoop {
+  0% {
+    left: 90%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 10%;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
 }

@@ -102,6 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     container.removeEventListener('mouseup', endDrag)
     container.removeEventListener('touchend', endDrag)
   }
+
+  setTimeout(() => {
+    _('swiper').classList.add('hidden')
+  }, 6000)
 })
 
 moneyTransferForm.querySelector('select').addEventListener('change', (el) => {

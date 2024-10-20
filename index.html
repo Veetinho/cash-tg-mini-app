@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Genos&family=DM+Serif+Display&display=swap&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=unknown_document"
       rel="stylesheet"
     />
   </head>
@@ -24,7 +24,7 @@
       class="relative ml-auto mr-auto overflow-y-auto w-[500px] max-w-full min-h-screen overflow-hidden"
     >
       <div
-        class="screen__block flex flex-col items-center justify-center px-3 py-4 bg-gradient-to-tr from-indigo-400 via-fuchsia-200 via-purple-300 to-blue-400"
+        class="screen__block flex flex-col items-center justify-start px-3 py-4 bg-gradient-to-tr from-indigo-400 via-fuchsia-200 via-purple-300 to-blue-400"
         data-index="0"
       >
         <div
@@ -55,7 +55,7 @@
               <h2 class="text-2xl font-bold text-cyan-700">
                 Vitalii Vykhrystiuk
               </h2>
-              <p class="text-lg font-semibold text-gray-600 mt-2">
+              <p class="text-base font-semibold text-gray-600 mt-2">
                 Specjalista ds. rozwoju systemów informatycznych
               </p>
             </div>
@@ -64,11 +64,9 @@
         <div
           class="flex flex-col gap-3 w-full max-w-md mt-10 p-5 rounded-3xl shadow-lg bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white"
         >
-          <h3 class="dm-serif-display-regular text-2xl text-cyan-700">
-            ISPIK Cash
-          </h3>
+          <h3 class="font-dm text-2xl text-cyan-700">ISPIK Cash</h3>
 
-          <p class="text-left font-semibold text-cyan-900 text-lg">
+          <p class="text-left font-semibold text-cyan-900 text-base">
             to Telegram Mini App aplikacja, dzięki której możesz łatwiej i
             wygodniej wymieniać się informacjami i dokumentami wewnątrz firmy
           </p>
@@ -185,6 +183,24 @@
             </svg>
           </div>
         </div>
+        <!-- swiper -->
+        <div id="swiper" class="animation-container flex mt-8">
+          <div
+            class="circle pl-3 pt-4 bg-gradient-to-r from-blue-500 to-transparent rounded-l-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="48px"
+              width="48px"
+              viewBox="0 -960 960 960"
+              fill="#fff"
+            >
+              <path
+                d="M419-80q-28 0-52.5-12T325-126L107-403l19-20q20-21 48-25t52 11l74 45v-328q0-17 11.5-28.5T340-760q17 0 29 11.5t12 28.5v472l-97-60 104 133q6 7 14 11t17 4h221q33 0 56.5-23.5T720-240v-160q0-17-11.5-28.5T680-440H461v-80h219q50 0 85 35t35 85v160q0 66-47 113T640-80H419ZM167-620q-13-22-20-47.5t-7-52.5q0-83 58.5-141.5T340-920q83 0 141.5 58.5T540-720q0 27-7 52.5T513-620l-69-40q8-14 12-28.5t4-31.5q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 17 4 31.5t12 28.5l-69 40Zm335 280Z"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <!-- second screen -->
@@ -273,7 +289,7 @@
           class="flex flex-col w-full max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-tr from-slate-100 to-blue-100 text-md"
         >
           <div id="toggleFormButton" class="flex justify-center">
-            <h3 class="font-bold mb-2 text-lg">Nowy wniosek o przelew</h3>
+            <h3 class="font-bold mb-2 text-xl">Nowy wniosek o przelew</h3>
           </div>
           <form id="moneyTransferForm" class="space-y-2">
             <div>
@@ -326,7 +342,7 @@
             </div>
             <button
               type="submit"
-              class="w-full bg-gradient-to-r from-indigo-400 to-blue-500 text-white p-3 rounded-xl hover:bg-blue-600"
+              class="w-full bg-gradient-to-tr from-purple-400 via-indigo-400 to-blue-500 text-white p-3 rounded-xl hover:bg-blue-600"
             >
               Zatwierdź
             </button>
@@ -338,7 +354,7 @@
           id="recentRequests"
           class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-tr from-slate-100 to-blue-100"
         >
-          <p class="text-lg font-bold mb-2">Ostatnie wnioski o przelew</p>
+          <p class="text-xl font-bold mb-2">Ostatnie wnioski o przelew</p>
         </div>
       </div>
 
@@ -346,10 +362,14 @@
         class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-tr from-indigo-400 via-fuchsia-200 via-purple-300 to-blue-400"
         data-index="2"
       >
-        <h1>Third screen</h1>
+        <div class="flex flex-col gap-3">
+          <span class="material-symbols-outlined text-slate-50">
+            unknown_document
+          </span>
+        </div>
       </div>
     </div>
 
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
