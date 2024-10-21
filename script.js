@@ -31,6 +31,28 @@ const moneyApplicationData = [
   },
 ]
 
+const fvs = [
+  {
+    number: '1/10/2024',
+    sell_date: '2024-10-01',
+    payment_to: '2024-10-04',
+    status: 'paid',
+    paid_date: '2024-10-14',
+    buyer_name: 'FIRMA HANDLOWO-USŁUGOWA ROBERT IWASZKO',
+    price_gross: '13475.0',
+    currency: 'PLN',
+  },
+  {
+    number: '1/10/2024',
+    sell_date: '2024-10-01',
+    payment_to: '2024-10-08',
+    status: 'issued',
+    buyer_name: 'FUDA JAROSŁAW ŁAZARSKI',
+    price_gross: '26309.7',
+    currency: 'PLN',
+  },
+]
+
 const userInfo = {
   name: 'Test User',
   card: 'User 4619',
@@ -39,6 +61,8 @@ const userInfo = {
 const _ = (id) => document.getElementById(id)
 const moneyTransferForm = _('moneyTransferForm')
 const toggleFormButton = _('toggleFormButton')
+const fvSearchResults = _('fvSearchResults')
+const loader = _('loader')
 
 document.addEventListener('DOMContentLoaded', () => {
   window.Telegram.WebApp.expand()
@@ -108,6 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 6000)
 })
 
+function startLoading() {
+  loader.style.visibility = 'visible'
+}
+
+function endLoading() {
+  loader.style.visibility = 'hidden'
+}
+
 moneyTransferForm.querySelector('select').addEventListener('change', (el) => {
   if (el.target.value === 'Inne') {
     _('moneyTransferObject').classList.remove('hidden')
@@ -118,6 +150,7 @@ moneyTransferForm.querySelector('select').addEventListener('change', (el) => {
 })
 
 toggleFormButton.addEventListener('click', toggleMoneyApplicationForm)
+_('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
 moneyTransferForm.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -125,6 +158,31 @@ moneyTransferForm.addEventListener('submit', (e) => {
   addNewApplicationToList(data)
   toggleMoneyApplicationForm()
 })
+
+async function getFvStatusInfo(e) {
+  e.preventDefault()
+  const formData = new FormData(e.target)
+  const fvNrInputValue = formData.get('fvNrInput')
+  fvSearchResults.innerHTML = ''
+  startLoading()
+  const fvs = await fetchFvStatusInfo(fvNrInputValue)
+  fvs.forEach((fv) => {
+    const newDiv = createFvStatusCard(fv)
+    const firstDiv = fvSearchResults.querySelector('div')
+    fvSearchResults.insertBefore(newDiv, firstDiv)
+  })
+  e.target.reset()
+  endLoading()
+}
+
+async function fetchFvStatusInfo(nr) {
+  const res = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(fvs)
+    }, 2000)
+  })
+  return await res
+}
 
 function setHtmlUserInfo() {
   _('userName').innerText = userInfo.name.toUpperCase()
@@ -159,10 +217,10 @@ function addNewApplicationToList(data) {
   recentRequestsBlock.insertBefore(newDiv, firstDiv)
 }
 
-function formatToCurrency(num) {
+function formatToCurrency(num, currency = 'PLN') {
   return new Intl.NumberFormat('pl', {
     style: 'currency',
-    currency: 'PLN',
+    currency,
   }).format(num)
 }
 
@@ -205,6 +263,26 @@ function getCardClassesByApplicationStatus(status) {
       'text-green-900'
     )
   if (status.startsWith('Odrzucone'))
+    return new CardColors(
+      'from-red-200',
+      'to-orange-50',
+      'bg-red-950',
+      'bg-red-200',
+      'text-red-950'
+    )
+  return new CardColors()
+}
+
+function getCardClassesByFvStatus(status) {
+  if (status === 'partial' || status === 'paid')
+    return new CardColors(
+      'from-green-300',
+      'to-teal-100',
+      'bg-green-900',
+      'bg-green-300',
+      'text-green-900'
+    )
+  if (status === 'rejected')
     return new CardColors(
       'from-red-200',
       'to-orange-50',
@@ -259,6 +337,73 @@ function createApplicationCard(data) {
       }</p>
       <p class="pt-2">
         <b>Uwagi:</b> ${data.moneyTransferNote}
+      </p>
+    </div>`
+  return newDiv
+}
+
+function createFvStatusCard(res) {
+  const colorClasses = getCardClassesByFvStatus(res.status)
+  const statuses = {
+    paid: 'Opłacona',
+    rejected: 'Odrzucona ',
+    issued: 'Wystawiona ',
+    partial: 'Częściowo opłacona',
+  }
+  const status = statuses[res.status] ?? 'Nieznany'
+  const newDiv = document.createElement('div')
+  newDiv.classList.add(
+    'w-full',
+    'mb-2',
+    'p-3',
+    'bg-gradient-to-tr',
+    colorClasses.grFrom,
+    colorClasses.grTo,
+    colorClasses.txt,
+    'rounded-2xl',
+    'overflow-hidden',
+    'shadow-lg'
+  )
+  newDiv.innerHTML = `
+    <div class="flex justify-between">
+      <div class="flex gap-2 px-2 py-1 items-center ${
+        colorClasses.bg
+      } rounded-full">
+        <div class="w-3 h-3 rounded-full ${colorClasses.bgCircle}"></div>
+        <p class="text-sm font-sans font-semibold">${status}</p>
+      </div>
+    </div>
+    <div class="text-md">
+      <p class="pt-2"><b>Nr faktury:</b> ${res.number}</p>
+      <p class="pt-2">
+        <b>Data wystawienia:</b> ${getFormatedDate(new Date(res.sell_date))}
+      </p>
+      <p class="pt-2">
+        <b>Termin płatności:</b> ${getFormatedDate(new Date(res.payment_to))}
+      </p>
+      ${
+        status === 'Opłacona' || status === 'Częściowo opłacona'
+          ? `<p class="pt-2">
+            <b>Data płatności:</b> 
+            ${getFormatedDate(new Date(res.payment_to))}
+          </p>`
+          : ''
+      }
+      ${
+        status === 'Częściowo opłacona'
+          ? `<p class="pt-2">
+            <b>Suma opłat:</b> $ ${res.price_tax} ${res.currency}
+          </p>`
+          : ''
+      }
+      <p class="pt-2">
+        <b>Sprzedawca:</b> ${res.buyer_name}
+      </p>
+      <p class="pt-2">
+        <b>Wartość brutto:</b> ${formatToCurrency(
+          res.price_gross,
+          res.currency
+        )}
       </p>
     </div>`
   return newDiv
