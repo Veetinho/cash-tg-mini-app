@@ -42,6 +42,75 @@
       id="container"
       class="relative font-roboto ml-auto mr-auto overflow-y-auto w-[500px] max-w-full min-h-screen overflow-hidden"
     >
+      <!-- third screen -->
+      <div
+        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95%"
+        data-index="2"
+      >
+        <div
+          class="relative border-[8px] border-sky-600 bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-3xl mt-6 p-6 w-full"
+        >
+          <div
+            class="absolute -top-7 left-4 bg-blue-400 px-2 text-sky-700 font-bold"
+          >
+            <div class="flex flex-row items-center gap-3 w-full">
+              <span class="material-symbols-outlined text-slate-50 text-4xl">
+                unknown_document
+              </span>
+              <h3 class="text-2xl font-bold text-cyan-900">Status faktury</h3>
+            </div>
+          </div>
+          <div class="text-cyan-800 font-medium">
+            Tu możesz sprawdzić status faktury
+          </div>
+        </div>
+
+        <!-- <div class="flex flex-row items-center gap-5 w-full p-3">
+          <span class="material-symbols-outlined text-slate-50 text-5xl">
+            unknown_document
+          </span>
+          <h3 class="text-2xl font-bold text-cyan-900">Status faktury</h3>
+        </div> -->
+        <div
+          class="flex flex-col w-full p-3 my-4 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 text-cyan-900"
+        >
+          <h3 class="m-2 text-xl">Podaj numer faktury</h3>
+          <form id="submitFvStatusForm" class="flex gap-3 w-full items-center">
+            <input
+              type="text"
+              class="w-full h-10 p-2 rounded-lg"
+              name="fvNrInput"
+              autocomplete="off"
+              required
+            />
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-8 m-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div
+          class="flex flex-col w-full p-3 my-5 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 text-cyan-900"
+        >
+          <div class="flex flex-col items-center">
+            <h3 class="m-2 text-xl">Wyniki wyszukiwania</h3>
+            <div id="fvSearchResults" class="flex flex-col gap-2 w-full"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- first screen -->
       <div
         class="screen__block flex flex-col items-center justify-start px-3 py-4 bg-gradient-to-tr from-indigo-400 via-purple-300 to-blue-400"
@@ -374,61 +443,6 @@
           class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white"
         >
           <p class="text-xl font-bold mb-2">Ostatnie wnioski o przelew</p>
-        </div>
-      </div>
-
-      <!-- third screen -->
-      <div
-        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-tr from-indigo-400 via-purple-300 to-blue-400"
-        data-index="2"
-      >
-        <div class="flex flex-row items-center gap-5 w-full p-3">
-          <div>
-            <span class="material-symbols-outlined text-slate-50 text-5xl">
-              unknown_document
-            </span>
-          </div>
-          <div>
-            <h3 class="text-2xl font-bold text-cyan-900">Status faktury</h3>
-          </div>
-        </div>
-        <div
-          class="flex flex-col w-full p-3 my-4 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 text-cyan-900"
-        >
-          <h3 class="m-2 text-xl">Podaj numer faktury</h3>
-          <form id="submitFvStatusForm" class="flex gap-3 w-full items-center">
-            <input
-              type="text"
-              class="w-full h-8 p-2 rounded-lg"
-              name="fvNrInput"
-              autocomplete="off"
-              required
-            />
-            <button type="submit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-8 m-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                />
-              </svg>
-            </button>
-          </form>
-        </div>
-        <div
-          class="flex flex-col w-full p-3 my-5 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 text-cyan-900"
-        >
-          <div class="flex flex-col items-center">
-            <h3 class="m-2 text-xl">Wyniki wyszukiwania</h3>
-            <div id="fvSearchResults" class="flex flex-col gap-2 w-full"></div>
-          </div>
         </div>
       </div>
     </div>
