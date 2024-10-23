@@ -10,14 +10,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Roboto&family=DM+Serif+Display&display=swap&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=unknown_document"
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Roboto&family=DM+Serif+Display"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div id="loader" class="bg-sky-300/50">
+    <div
+      id="loader"
+      class="bg-gradient-to-t from-indigo-400/50 via-purple-300/50 to-blue-400/50 text-lg"
+    >
       <svg
-        class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+        class="animate-spin -ml-1 mr-3 h-10 w-10 text-white"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -42,79 +45,9 @@
       id="container"
       class="relative font-roboto ml-auto mr-auto overflow-y-auto w-[500px] max-w-full min-h-screen overflow-hidden"
     >
-      <!-- third screen -->
-      <div
-        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95%"
-        data-index="2"
-      >
-        <div
-          class="relative border-[8px] border-sky-600 bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-3xl mt-6 p-6 w-full"
-        >
-          <div
-            class="absolute -top-7 left-4 bg-blue-400 px-2 text-sky-700 font-bold"
-          >
-            <div class="flex flex-row items-center gap-3 w-full">
-              <span class="material-symbols-outlined text-slate-50 text-4xl">
-                unknown_document
-              </span>
-              <h3 class="text-2xl font-bold text-cyan-900">Status faktury</h3>
-            </div>
-          </div>
-          <div class="text-cyan-800 font-medium">
-            Tu możesz sprawdzić status faktury
-          </div>
-        </div>
-
-        <!-- <div class="flex flex-row items-center gap-5 w-full p-3">
-          <span class="material-symbols-outlined text-slate-50 text-5xl">
-            unknown_document
-          </span>
-          <h3 class="text-2xl font-bold text-cyan-900">Status faktury</h3>
-        </div> -->
-        <div
-          class="flex flex-col w-full p-3 my-4 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 text-cyan-900"
-        >
-          <h3 class="m-2 text-xl">Podaj numer faktury</h3>
-          <form id="submitFvStatusForm" class="flex gap-3 w-full items-center">
-            <input
-              type="text"
-              class="w-full h-10 p-2 rounded-lg"
-              name="fvNrInput"
-              autocomplete="off"
-              required
-            />
-            <button type="submit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-8 m-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                />
-              </svg>
-            </button>
-          </form>
-        </div>
-        <div
-          class="flex flex-col w-full p-3 my-5 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 text-cyan-900"
-        >
-          <div class="flex flex-col items-center">
-            <h3 class="m-2 text-xl">Wyniki wyszukiwania</h3>
-            <div id="fvSearchResults" class="flex flex-col gap-2 w-full"></div>
-          </div>
-        </div>
-      </div>
-
       <!-- first screen -->
       <div
-        class="screen__block flex flex-col items-center justify-start px-3 py-4 bg-gradient-to-tr from-indigo-400 via-purple-300 to-blue-400"
-        data-index="0"
+        class="screen__block flex flex-col items-center justify-start px-3 py-4 bg-gradient-to-tr from-indigo-400 via-purple-300 to-blue-400 text-cyan-900"
       >
         <div
           class="flex w-full max-w-md p-3 bg-blue-300/30 rounded-3xl shadow-inner"
@@ -141,10 +74,8 @@
               </div>
             </div>
             <div class="text-center mt-4">
-              <h2 class="text-2xl font-bold text-cyan-700">
-                Vitalii Vykhrystiuk
-              </h2>
-              <p class="text-base font-semibold text-gray-600 mt-2">
+              <h2 class="text-2xl font-dm font-medium">Vitalii Vykhrystiuk</h2>
+              <p class="text-base font-medium mt-2">
                 Specjalista ds. rozwoju systemów informatycznych
               </p>
             </div>
@@ -153,8 +84,8 @@
         <div
           class="flex flex-col gap-3 w-full max-w-md mt-10 p-5 rounded-3xl shadow-lg bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white"
         >
-          <h3 class="font-dm text-2xl font-bold text-cyan-700">ISPIK Cash</h3>
-          <p class="text-left font-medium text-cyan-900 text-base">
+          <h3 class="font-dm text-2xl font-medium text-cyan-700">ISPIK Cash</h3>
+          <p class="text-left font-medium text-base">
             to Telegram Mini App aplikacja, dzięki której możesz łatwiej i
             wygodniej wymieniać się informacjami i dokumentami wewnątrz firmy
           </p>
@@ -293,9 +224,34 @@
 
       <!-- second screen -->
       <div
-        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-tr from-indigo-400 via-purple-300 to-blue-400"
-        data-index="1"
+        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95%"
       >
+        <div
+          class="relative border-[6px] border-sky-600 bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-3xl my-5 p-5 w-full"
+        >
+          <div
+            class="absolute -top-6 left-4 bg-blue-400 px-2 text-sky-700 font-bold"
+          >
+            <div class="flex flex-row items-center gap-3 w-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="36px"
+                width="36px"
+                viewBox="0 -960 960 960"
+                fill="#5985E1"
+              >
+                <path
+                  d="M160-640h640v-80H160v80Zm-80-80q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v240H160v240h164v80H160q-33 0-56.5-23.5T80-240v-480ZM598-80 428-250l56-56 114 112 226-226 56 58L598-80ZM160-720v480-180 113-413Z"
+                />
+              </svg>
+              <h3 class="text-xl font-bold text-cyan-900">Wniosek o przelew</h3>
+            </div>
+          </div>
+          <div class="text-cyan-800 text-lg font-medium">
+            Tu możesz złożyć wniosek o przelew oraz zobaczyć historie twoich
+            wniosków
+          </div>
+        </div>
         <!-- debit card -->
         <div class="flex w-full max-w-md mb-3 text-lg">
           <div
@@ -367,14 +323,16 @@
               <div><p id="cardNumber">0000</p></div>
             </div>
             <div class="flex justify-start mb-2">
-              <p id="userName" class="font-semibold text-2xl">Nazwisko Imię</p>
+              <p id="userName" class="font-mono font-medium text-2xl">
+                Nazwisko Imię
+              </p>
             </div>
           </div>
         </div>
 
         <!-- form -->
         <div
-          class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white"
+          class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
         >
           <div id="toggleFormButton" class="flex justify-center">
             <h3 class="font-bold mb-2 text-xl">Nowy wniosek o przelew</h3>
@@ -440,9 +398,76 @@
         <!-- last applications -->
         <div
           id="recentRequests"
-          class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white"
+          class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
         >
           <p class="text-xl font-bold mb-2">Ostatnie wnioski o przelew</p>
+        </div>
+      </div>
+
+      <!-- third screen -->
+      <div
+        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
+      >
+        <div
+          class="relative border-[6px] border-sky-600 bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-3xl my-5 p-5 w-full"
+        >
+          <div class="absolute -top-6 left-4 bg-blue-400 px-2 font-bold">
+            <div class="flex flex-row items-center gap-3 w-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="36px"
+                width="36px"
+                viewBox="0 -960 960 960"
+                fill="#5985E1"
+              >
+                <path
+                  d="M200-800v640-640 200-200Zm80 400h147q11-23 25.5-43t32.5-37H280v80Zm0 160h123q-3-20-3-40t3-40H280v80ZM200-80q-33 0-56.5-23.5T120-160v-640q0-33 23.5-56.5T200-880h320l240 240v92q-19-6-39-9t-41-3v-40H480v-200H200v640h227q11 23 25.5 43T485-80H200Zm480-400q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480Zm0 320q11 0 18.5-7.5T706-186q0-11-7.5-18.5T680-212q-11 0-18.5 7.5T654-186q0 11 7.5 18.5T680-160Zm-18-76h36v-10q0-11 6-19.5t14-16.5q14-12 22-23t8-31q0-29-19-46.5T680-400q-23 0-41.5 13.5T612-350l32 14q3-12 12.5-21t23.5-9q15 0 23.5 7.5T712-336q0 11-6 18.5T692-302q-6 6-12.5 12T668-276q-3 6-4.5 12t-1.5 14v14Z"
+                />
+              </svg>
+              <h3 class="text-xl font-bold">Status faktury</h3>
+            </div>
+          </div>
+          <div class="text-lg font-medium">
+            Tu możesz sprawdzić status faktury
+          </div>
+        </div>
+        <div
+          class="flex flex-col w-full p-3 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200"
+        >
+          <h3 class="m-2 text-xl">Podaj numer faktury</h3>
+          <form id="submitFvStatusForm" class="flex gap-3 w-full items-center">
+            <input
+              type="text"
+              class="w-full h-10 p-2 rounded-lg"
+              name="fvNrInput"
+              autocomplete="off"
+              required
+            />
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-8 m-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div
+          class="flex flex-col w-full p-3 my-5 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200"
+        >
+          <div class="flex flex-col items-center">
+            <h3 class="m-2 text-xl">Wyniki wyszukiwania</h3>
+            <div id="fvSearchResults" class="flex flex-col gap-2 w-full"></div>
+          </div>
         </div>
       </div>
     </div>
