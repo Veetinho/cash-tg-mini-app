@@ -95,3 +95,22 @@ label:has(+ [required])::after {
     opacity: 0;
   }
 }
+
+/* header-card */
+.header-card {
+  background: linear-gradient(141deg, #0284c7, #2563eb, #0891b2, #0ea5e9);
+  background-size: 300% 300%;
+  animation: header-card-content 10s ease infinite;
+}
+
+@keyframes header-card-content {
+  0% {
+    background-position: 0% 53%;
+  }
+  50% {
+    background-position: 100% 48%;
+  }
+  100% {
+    background-position: 0% 53%;
+  }
+}
