@@ -60,7 +60,8 @@ const userInfo = {
 
 const _ = (id) => document.getElementById(id)
 const moneyTransferForm = _('moneyTransferForm')
-const toggleFormButton = _('toggleFormButton')
+const toggleApplicationFormButton = _('toggleApplicationFormButton')
+const toggleRefundFormButton = _('toggleRefundFormButton')
 const fvSearchResults = _('fvSearchResults')
 const loader = _('loader')
 
@@ -111,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
       blocks[currentIndex].style.transform = 'translateX(-100%)'
       currentIndex++
       blocks[currentIndex].style.transform = 'translateX(0)'
-      blocks[currentIndex].scrollTo({ top: 0, behavior: 'smooth' })
+      scrollToTop(blocks[currentIndex])
     } else if (deltaX > 100 && currentIndex > 0) {
       blocks[currentIndex].style.transform = 'translateX(100%)'
       currentIndex--
       blocks[currentIndex].style.transform = 'translateX(0)'
-      blocks[currentIndex].scrollTo({ top: 0, behavior: 'smooth' })
+      scrollToTop(blocks[currentIndex])
     } else {
       blocks[currentIndex].style.transform = 'translateX(0)'
     }
@@ -149,14 +150,34 @@ moneyTransferForm.querySelector('select').addEventListener('change', (el) => {
   }
 })
 
-toggleFormButton.addEventListener('click', toggleMoneyApplicationForm)
+toggleApplicationFormButton.addEventListener('click', (e) => {
+  toggleApplicationForm(
+    e.target.parentElement.parentElement.querySelector('form')
+  )
+})
+
+toggleRefundFormButton.addEventListener('click', (e) => {
+  toggleApplicationForm(
+    e.target.parentElement.parentElement.querySelector('form')
+  )
+})
+
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
 moneyTransferForm.addEventListener('submit', (e) => {
   e.preventDefault()
-  const data = getDataFromForm()
+  const data = getDataFromForm(moneyTransferForm)
   addNewApplicationToList(data)
-  toggleMoneyApplicationForm()
+  toggleApplicationForm(moneyTransferForm)
+  scrollToTop(moneyTransferForm.parentElement.parentElement)
+})
+
+invoiceRefundForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const data = getDataFromForm(invoiceRefundForm)
+  addNewCompensationApplicationToList(data)
+  toggleApplicationForm(invoiceRefundForm)
+  scrollToTop(invoiceRefundForm.parentElement.parentElement)
 })
 
 async function getFvStatusInfo(e) {
@@ -192,8 +213,8 @@ function setHtmlUserInfo() {
     .forEach(addNewApplicationToList)
 }
 
-function getDataFromForm() {
-  const formData = new FormData(moneyTransferForm)
+function getDataFromForm(form) {
+  const formData = new FormData(form)
   const obj = {}
   for (const [key, value] of formData.entries()) obj[key] = value
   obj.timestamp = Date.now()
@@ -201,12 +222,12 @@ function getDataFromForm() {
   return obj
 }
 
-function toggleMoneyApplicationForm() {
-  if (moneyTransferForm.classList.contains('open')) {
-    moneyTransferForm.classList.remove('open')
+function toggleApplicationForm(form) {
+  if (form.classList.contains('open')) {
+    form.classList.remove('open')
   } else {
-    moneyTransferForm.classList.add('open')
-    moneyTransferForm.reset()
+    form.classList.add('open')
+    form.reset()
   }
 }
 
@@ -215,6 +236,20 @@ function addNewApplicationToList(data) {
   const newDiv = createApplicationCard(data)
   const firstDiv = recentRequestsBlock.querySelector('div')
   recentRequestsBlock.insertBefore(newDiv, firstDiv)
+}
+
+function addNewCompensationApplicationToList(data) {
+  const recentRequestsBlock = _('recentCompensationRequests')
+  const newDiv = createCompensationApplicationCard(data)
+  const firstDiv = recentRequestsBlock.querySelector('div')
+  recentRequestsBlock.insertBefore(newDiv, firstDiv)
+}
+
+function scrollToTop(el) {
+  el.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 }
 
 function formatToCurrency(num, currency = 'PLN') {
@@ -337,6 +372,52 @@ function createApplicationCard(data) {
       }</p>
       <p class="pt-2">
         <b>Uwagi:</b> ${data.moneyTransferNote}
+      </p>
+    </div>`
+  return newDiv
+}
+
+function createCompensationApplicationCard(data) {
+  const colorClasses = getCardClassesByApplicationStatus(data.status)
+  const now = new Date(+data.timestamp)
+  const newDiv = document.createElement('div')
+  newDiv.classList.add(
+    'w-full',
+    'mb-2',
+    'p-3',
+    'bg-gradient-to-tr',
+    colorClasses.grFrom,
+    colorClasses.grTo,
+    colorClasses.txt,
+    'rounded-2xl',
+    'overflow-hidden',
+    'shadow-lg'
+  )
+  newDiv.innerHTML = `
+    <div class="flex justify-between">
+      <div class="flex flex-col justify-between">
+        <div class="flex gap-2 px-2 py-1 items-center ${
+          colorClasses.bg
+        } rounded-full">
+          <div class="w-3 h-3 rounded-full ${colorClasses.bgCircle}"></div>
+          <p class="text-sm font-sans font-semibold">${data.status}</p>
+        </div>
+        <div>
+          <p class="text-2xl font-mono font-semibold">${formatToCurrency(
+            data.invoiceRefundAmount
+          )}</p>
+        </div>
+      </div>
+      <div class="flex flex-col justify-between text-right rounded-xl p-1">
+        <div><p class="text-xl font-mono">${getFormatedTime(now)}</p></div>
+        <div>
+          <p class="text-lg font-mono">${getFormatedDate(now)}</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-md">
+      <p class="pt-2">
+        <b>Uwagi:</b> ${data.invoiceRefundNote}
       </p>
     </div>`
   return newDiv

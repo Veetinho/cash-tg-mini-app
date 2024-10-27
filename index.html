@@ -80,7 +80,7 @@
         <div
           class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
         >
-          <div class="flex justify-center">
+          <div id="toggleRefundFormButton" class="flex justify-center">
             <h3 class="font-bold mb-2 text-xl">Nowy wniosek o odszkodowanie</h3>
           </div>
           <form id="invoiceRefundForm" class="flex flex-col gap-4">
@@ -138,6 +138,13 @@
               Zatwierdź
             </button>
           </form>
+        </div>
+        <!-- last applications -->
+        <div
+          id="recentCompensationRequests"
+          class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
+        >
+          <p class="text-xl font-bold mb-2">Ostatnie wnioski o odszkodowanie</p>
         </div>
       </div>
 
@@ -432,7 +439,7 @@
         <div
           class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
         >
-          <div id="toggleFormButton" class="flex justify-center">
+          <div id="toggleApplicationFormButton" class="flex justify-center">
             <h3 class="font-bold mb-2 text-xl">Nowy wniosek o przelew</h3>
           </div>
           <form id="moneyTransferForm" class="space-y-2">
