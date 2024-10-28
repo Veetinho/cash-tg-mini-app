@@ -37,21 +37,21 @@ const moneyRefundApplicationData = [
     status: 'Oczekuje',
     invoiceRefundAmount: 320,
     invoiceRefundNote: 'замена Резины Varanets Valerii',
-    url: 'https://drive.google.com/drive/folders/1cNIxjI5vsrPbeQIQlMp6uRLGf6sodNa0',
+    fileId: '1nIop_yizojelzIMUrbM6wusv2lcZ7q22',
   },
   {
     timestamp: '1728296529786',
     status: 'Odrzucone',
     invoiceRefundAmount: 38.99,
     invoiceRefundNote: 'пистолет для пены (Kruk Nazar)',
-    url: 'https://drive.google.com/drive/folders/1TCFWHPX-AFR58yaNZ3eX741-WWDo6Bg1',
+    fileId: '1jdFEVEapGZynhgBaf6ErvUCNdF32yRDz',
   },
   {
     timestamp: '1728296529786',
     status: 'Zaakceptowane',
     invoiceRefundAmount: 219,
     invoiceRefundNote: 'полоса металла для кафара YESIMCHYK MIKHAIL',
-    url: 'https://drive.google.com/drive/folders/1cfP7EEz3qZ6tdIgxnT_HQyaZg4ULPmcJ',
+    fileId: '1Uw5uESIycX1T_QJJoPImDdo_9gMhkVGI',
   },
 ]
 
@@ -258,6 +258,15 @@ function toggleApplicationForm(form) {
   }
 }
 
+function closeFVModal() {
+  _('modalFV').classList.add('hidden')
+}
+
+function showFVModal(fileId) {
+  _('modalFV').classList.remove('hidden')
+  _('modalFV').innerHTML = createFVModalInnerHtml(fileId)
+}
+
 function addNewApplicationToList(data) {
   const recentRequestsBlock = _('recentRequests')
   const newDiv = createApplicationCard(data)
@@ -420,6 +429,8 @@ function createRefundApplicationCard(data) {
     'overflow-hidden',
     'shadow-lg'
   )
+  newDiv.id = data.fileId
+  newDiv.ondblclick = () => showFVModal(data.fileId)
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
@@ -515,6 +526,36 @@ function createFvStatusCard(res) {
       </p>
     </div>`
   return newDiv
+}
+
+function createFVModalInnerHtml(fileId) {
+  return `<div
+      class="relative px-4 rounded-lg shadow-lg h-screen flex flex-col items-center justify-center"
+    >
+      <div class="static">
+        <button
+          onclick="closeFVModal()"
+          class="absolute right-0 top-0 p-1 m-3 bg-red-500 text-white rounded-full"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="30px"
+            viewBox="0 -960 960 960"
+            width="30px"
+            fill="#fff"
+          >
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+            />
+          </svg>
+        </button>
+      </div>
+      <img
+        class="overflow-auto"
+        src="https://drive.google.com/thumbnail?sz=h1000&id=${fileId}"
+        alt="Faktura"
+      />
+    </div>`
 }
 
 class CardColors {

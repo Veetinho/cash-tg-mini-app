@@ -46,40 +46,8 @@
     <!-- modal -->
     <div
       id="modalFV"
-      class="fixed z-10 min-w-full bg-gradient-to-t from-indigo-400/70 via-purple-300/70 to-blue-400/70"
-    >
-      <div
-        class="relative p-6 rounded-lg shadow-lg h-screen flex flex-col items-center justify-center"
-      >
-        <div class="flex flex-row items-end">
-          <button id="closeModal" class="p-1 my-3 text-white rounded-full">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="36px"
-              width="36px"
-              viewBox="0 -960 960 960"
-              fill="red"
-            >
-              <path
-                d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <!-- <img src="https://placehold.co/400x600" alt="Фото" /> -->
-        <!-- <img
-          class="overflow-auto"
-          src="https://drive.google.com/thumbnail?sz=h1000&id=1wT4WS82BJsIffeWhKX2mn4K-bAQDw_Xo"
-          alt="Фото"
-        /> -->
-        <img
-          class="overflow-auto"
-          src="https://drive.google.com/thumbnail?sz=h1000&id=1cAdJ_vfEFeoENxqorndbf6aUoj-hA1xV"
-          alt="Фото"
-        />
-      </div>
-    </div>
+      class="fixed z-10 min-w-full bg-gradient-to-t from-indigo-400/70 via-purple-300/70 to-blue-400/70 hidden"
+    ></div>
 
     <div
       id="container"
@@ -141,6 +109,7 @@
                 name="invoiceRefundNote"
                 class="w-full p-3 border border-gray-300 rounded-xl"
                 placeholder="Uwagi"
+                required
               ></textarea>
             </div>
             <label for="invoiceRefundFile">
@@ -167,6 +136,7 @@
                   type="file"
                   id="invoiceRefundFile"
                   style="display: none"
+                  required
                 />
               </div>
             </label>
