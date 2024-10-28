@@ -31,6 +31,30 @@ const moneyApplicationData = [
   },
 ]
 
+const moneyRefundApplicationData = [
+  {
+    timestamp: '1728296529786',
+    status: 'Oczekuje',
+    invoiceRefundAmount: 320,
+    invoiceRefundNote: 'замена Резины Varanets Valerii',
+    url: 'https://drive.google.com/drive/folders/1cNIxjI5vsrPbeQIQlMp6uRLGf6sodNa0',
+  },
+  {
+    timestamp: '1728296529786',
+    status: 'Odrzucone',
+    invoiceRefundAmount: 38.99,
+    invoiceRefundNote: 'пистолет для пены (Kruk Nazar)',
+    url: 'https://drive.google.com/drive/folders/1TCFWHPX-AFR58yaNZ3eX741-WWDo6Bg1',
+  },
+  {
+    timestamp: '1728296529786',
+    status: 'Zaakceptowane',
+    invoiceRefundAmount: 219,
+    invoiceRefundNote: 'полоса металла для кафара YESIMCHYK MIKHAIL',
+    url: 'https://drive.google.com/drive/folders/1cfP7EEz3qZ6tdIgxnT_HQyaZg4ULPmcJ',
+  },
+]
+
 const fvs = [
   {
     number: '1/10/2024',
@@ -175,7 +199,7 @@ moneyTransferForm.addEventListener('submit', (e) => {
 invoiceRefundForm.addEventListener('submit', (e) => {
   e.preventDefault()
   const data = getDataFromForm(invoiceRefundForm)
-  addNewCompensationApplicationToList(data)
+  addNewRefundApplicationToList(data)
   toggleApplicationForm(invoiceRefundForm)
   scrollToTop(invoiceRefundForm.parentElement.parentElement)
 })
@@ -211,6 +235,9 @@ function setHtmlUserInfo() {
   moneyApplicationData
     .sort((a, b) => +a.timestamp - +b.timestamp)
     .forEach(addNewApplicationToList)
+  moneyRefundApplicationData
+    .sort((a, b) => +a.timestamp - +b.timestamp)
+    .forEach(addNewRefundApplicationToList)
 }
 
 function getDataFromForm(form) {
@@ -238,9 +265,9 @@ function addNewApplicationToList(data) {
   recentRequestsBlock.insertBefore(newDiv, firstDiv)
 }
 
-function addNewCompensationApplicationToList(data) {
-  const recentRequestsBlock = _('recentCompensationRequests')
-  const newDiv = createCompensationApplicationCard(data)
+function addNewRefundApplicationToList(data) {
+  const recentRequestsBlock = _('recentRefundRequests')
+  const newDiv = createRefundApplicationCard(data)
   const firstDiv = recentRequestsBlock.querySelector('div')
   recentRequestsBlock.insertBefore(newDiv, firstDiv)
 }
@@ -377,7 +404,7 @@ function createApplicationCard(data) {
   return newDiv
 }
 
-function createCompensationApplicationCard(data) {
+function createRefundApplicationCard(data) {
   const colorClasses = getCardClassesByApplicationStatus(data.status)
   const now = new Date(+data.timestamp)
   const newDiv = document.createElement('div')
