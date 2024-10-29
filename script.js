@@ -37,7 +37,7 @@ const moneyRefundApplicationData = [
     status: 'Oczekuje',
     invoiceRefundAmount: 320,
     invoiceRefundNote: 'замена Резины Varanets Valerii',
-    fileId: '1nIop_yizojelzIMUrbM6wusv2lcZ7q22',
+    fileId: '1zPZQ-82u2b82_Nou5XIXsL9xaaXgSpHq',
   },
   {
     timestamp: '1728296529786',
@@ -431,6 +431,7 @@ function createRefundApplicationCard(data) {
   )
   newDiv.id = data.fileId
   newDiv.ondblclick = () => showFVModal(data.fileId)
+  newDiv.ontouchend = () => showFVModal(data.fileId)
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
@@ -554,6 +555,7 @@ function createFVModalInnerHtml(fileId) {
         class="overflow-auto"
         src="https://drive.google.com/thumbnail?sz=h1000&id=${fileId}"
         alt="Faktura"
+        loading="lazy"
       />
     </div>`
 }
