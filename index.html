@@ -53,110 +53,6 @@
       id="container"
       class="relative font-roboto ml-auto mr-auto overflow-y-auto w-[500px] max-w-full min-h-screen overflow-hidden"
     >
-      <!-- fourth screen -->
-      <div
-        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
-      >
-        <div class="header-card rounded-2xl my-5 p-1.5 w-full">
-          <div
-            class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3"
-          >
-            <div class="absolute -top-6 left-4 bg-blue-400 px-2 font-bold">
-              <div class="flex flex-row items-center gap-3 w-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="36px"
-                  width="36px"
-                  viewBox="0 -960 960 960"
-                  fill="#0369a1"
-                >
-                  <path
-                    d="M440-200h80v-40h40q17 0 28.5-11.5T600-280v-120q0-17-11.5-28.5T560-440H440v-40h160v-80h-80v-40h-80v40h-40q-17 0-28.5 11.5T360-520v120q0 17 11.5 28.5T400-360h120v40H360v80h80v40ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-480H520ZM240-800v160-160 640-640Z"
-                  />
-                </svg>
-                <h3 class="text-xl font-bold text-sky-700">Odszkodowanie</h3>
-              </div>
-            </div>
-            <div class="text-lg font-medium">
-              Tu możesz złożyć wniosek o odszkodowanie na podstawie faktury
-            </div>
-          </div>
-        </div>
-
-        <!-- form -->
-        <div
-          class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
-        >
-          <div id="toggleRefundFormButton" class="flex justify-center">
-            <h3 class="font-bold mb-2 text-xl">Nowy wniosek o odszkodowanie</h3>
-          </div>
-          <form id="invoiceRefundForm" class="flex flex-col gap-4">
-            <div>
-              <label class="block mb-2 font-medium">Kwota:</label>
-              <input
-                type="number"
-                min="1"
-                step=".01"
-                name="invoiceRefundAmount"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-                placeholder="Podaj kwotę"
-                required
-              />
-            </div>
-            <div>
-              <label class="block mb-2 font-medium">Uwagi:</label>
-              <textarea
-                name="invoiceRefundNote"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-                placeholder="Uwagi"
-                required
-              ></textarea>
-            </div>
-            <label for="invoiceRefundFile">
-              <div
-                class="flex flex-row items-center gap-5 p-3 border-2 border-dashed border-spacing-5 border-cyan-600 rounded-xl"
-              >
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="36px"
-                    viewBox="0 -960 960 960"
-                    width="36px"
-                    fill="#0369a1"
-                  >
-                    <path
-                      d="M640-520v-200h80v200h-80ZM440-244q-35-10-57.5-39T360-350v-370h80v476Zm30 164q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v300h-80v-300q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q25 0 47.5-6.5T560-186v89q-21 8-43.5 12.5T470-80Zm170-40v-120H520v-80h120v-120h80v120h120v80H720v120h-80Z"
-                    />
-                  </svg>
-                </div>
-                <div class="text-lg">
-                  <span>Dodaj dokument</span>
-                </div>
-                <input
-                  type="file"
-                  id="invoiceRefundFile"
-                  style="display: none"
-                  required
-                />
-              </div>
-            </label>
-            <button
-              type="submit"
-              class="w-full header-card text-white p-3 rounded-xl"
-            >
-              Zatwierdź
-            </button>
-          </form>
-        </div>
-        <!-- last applications -->
-        <div
-          id="recentRefundRequests"
-          class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
-        >
-          <p class="text-xl font-bold mb-2">Ostatnie wnioski o odszkodowanie</p>
-        </div>
-      </div>
-
       <!-- first screen -->
       <div
         class="screen__block flex flex-col items-center justify-start px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
@@ -521,6 +417,110 @@
       </div>
 
       <!-- third screen -->
+      <div
+        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
+      >
+        <div class="header-card rounded-2xl my-5 p-1.5 w-full">
+          <div
+            class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3"
+          >
+            <div class="absolute -top-6 left-4 bg-blue-400 px-2 font-bold">
+              <div class="flex flex-row items-center gap-3 w-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="36px"
+                  width="36px"
+                  viewBox="0 -960 960 960"
+                  fill="#0369a1"
+                >
+                  <path
+                    d="M440-200h80v-40h40q17 0 28.5-11.5T600-280v-120q0-17-11.5-28.5T560-440H440v-40h160v-80h-80v-40h-80v40h-40q-17 0-28.5 11.5T360-520v120q0 17 11.5 28.5T400-360h120v40H360v80h80v40ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-480H520ZM240-800v160-160 640-640Z"
+                  />
+                </svg>
+                <h3 class="text-xl font-bold text-sky-700">Odszkodowanie</h3>
+              </div>
+            </div>
+            <div class="text-lg font-medium">
+              Tu możesz złożyć wniosek o odszkodowanie na podstawie faktury
+            </div>
+          </div>
+        </div>
+
+        <!-- form -->
+        <div
+          class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
+        >
+          <div id="toggleRefundFormButton" class="flex justify-center">
+            <h3 class="font-bold mb-2 text-xl">Nowy wniosek o odszkodowanie</h3>
+          </div>
+          <form id="invoiceRefundForm" class="flex flex-col gap-4">
+            <div>
+              <label class="block mb-2 font-medium">Kwota:</label>
+              <input
+                type="number"
+                min="1"
+                step=".01"
+                name="invoiceRefundAmount"
+                class="w-full p-3 border border-gray-300 rounded-xl"
+                placeholder="Podaj kwotę"
+                required
+              />
+            </div>
+            <div>
+              <label class="block mb-2 font-medium">Uwagi:</label>
+              <textarea
+                name="invoiceRefundNote"
+                class="w-full p-3 border border-gray-300 rounded-xl"
+                placeholder="Uwagi"
+                required
+              ></textarea>
+            </div>
+            <label for="invoiceRefundFile">
+              <div
+                class="flex flex-row items-center gap-5 p-3 border-2 border-dashed border-spacing-5 border-cyan-600 rounded-xl"
+              >
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="36px"
+                    viewBox="0 -960 960 960"
+                    width="36px"
+                    fill="#0369a1"
+                  >
+                    <path
+                      d="M640-520v-200h80v200h-80ZM440-244q-35-10-57.5-39T360-350v-370h80v476Zm30 164q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v300h-80v-300q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q25 0 47.5-6.5T560-186v89q-21 8-43.5 12.5T470-80Zm170-40v-120H520v-80h120v-120h80v120h120v80H720v120h-80Z"
+                    />
+                  </svg>
+                </div>
+                <div class="text-lg">
+                  <span>Dodaj dokument</span>
+                </div>
+                <input
+                  type="file"
+                  id="invoiceRefundFile"
+                  style="display: none"
+                  required
+                />
+              </div>
+            </label>
+            <button
+              type="submit"
+              class="w-full header-card text-white p-3 rounded-xl"
+            >
+              Zatwierdź
+            </button>
+          </form>
+        </div>
+        <!-- last applications -->
+        <div
+          id="recentRefundRequests"
+          class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
+        >
+          <p class="text-xl font-bold mb-2">Ostatnie wnioski o odszkodowanie</p>
+        </div>
+      </div>
+
+      <!-- fourth screen -->
       <div
         class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
       >

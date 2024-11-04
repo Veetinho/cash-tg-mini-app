@@ -262,10 +262,10 @@ function closeFVModal() {
   _('modalFV').classList.add('hidden')
 }
 
-function showFVModal(fileId) {
-  _('modalFV').classList.remove('hidden')
-  _('modalFV').innerHTML = createFVModalInnerHtml(fileId)
-}
+// function showFVModal(fileId) {
+//   _('modalFV').classList.remove('hidden')
+//   _('modalFV').innerHTML = createFVModalInnerHtml(fileId)
+// }
 
 function addNewApplicationToList(data) {
   const recentRequestsBlock = _('recentRequests')
@@ -429,9 +429,6 @@ function createRefundApplicationCard(data) {
     'overflow-hidden',
     'shadow-lg'
   )
-  newDiv.id = data.fileId
-  newDiv.ondblclick = () => showFVModal(data.fileId)
-  newDiv.ontouchend = () => showFVModal(data.fileId)
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
@@ -458,7 +455,34 @@ function createRefundApplicationCard(data) {
       <p class="pt-2">
         <b>Uwagi:</b> ${data.invoiceRefundNote}
       </p>
-    </div>`
+    </div>
+    <button
+        class="flex lfex-row gap-3 items-center justify-center w-full p-3 mt-2 bg-transparent shadow-lg font-semibold rounded-2xl border-t-2 ${colorClasses.bg.replace(
+          'bg',
+          'border'
+        )}"
+      >
+        <div>
+          <svg
+            class="${colorClasses.bgCircle.replace('bg', 'fill')}"
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+          >
+            <path
+              d="M313-40q-24 0-46-9t-39-26L24-280l33-34q14-14 34-19t40 0l69 20v-327q0-17 11.5-28.5T240-680q17 0 28.5 11.5T280-640v433l-98-28 103 103q6 6 13 9t15 3h167q33 0 56.5-23.5T560-200v-160q0-17 11.5-28.5T600-400q17 0 28.5 11.5T640-360v160q0 66-47 113T480-40H313Zm7-280v-160q0-17 11.5-28.5T360-520q17 0 28.5 11.5T400-480v160h-80Zm120 0v-120q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440v120h-80Zm40 200H285h195Zm160-400q-91 0-168-48T360-700q35-84 112-132t168-48q91 0 168 48t112 132q-35 84-112 132t-168 48Zm0-80q57 0 107.5-26t82.5-74q-32-48-82.5-74T640-800q-57 0-107.5 26T450-700q32 48 82.5 74T640-600Zm0-40q-25 0-42.5-17.5T580-700q0-25 17.5-42.5T640-760q25 0 42.5 17.5T700-700q0 25-17.5 42.5T640-640Z"
+            />
+          </svg>
+        </div>
+        <div>
+          <a
+            href="https://drive.google.com/thumbnail?sz=h1000&id=${data.fileId}"
+            target="_blank"
+            >Faktura VAT</a
+          >
+        </div>
+      </button>`
   return newDiv
 }
 
@@ -529,36 +553,35 @@ function createFvStatusCard(res) {
   return newDiv
 }
 
-function createFVModalInnerHtml(fileId) {
-  return `<div
-      class="relative px-4 rounded-lg shadow-lg h-screen flex flex-col items-center justify-center"
-    >
-      <div class="static">
-        <button
-          onclick="closeFVModal()"
-          class="absolute right-0 top-0 p-1 m-3 bg-red-500 text-white rounded-full"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="30px"
-            viewBox="0 -960 960 960"
-            width="30px"
-            fill="#fff"
-          >
-            <path
-              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-            />
-          </svg>
-        </button>
-      </div>
-      <img
-        class="overflow-auto"
-        src="https://drive.google.com/thumbnail?sz=h1000&id=${fileId}"
-        alt="Faktura"
-        loading="lazy"
-      />
-    </div>`
-}
+// function createFVModalInnerHtml(fileId) {
+//   return `<div
+//       class="relative px-4 rounded-lg shadow-lg h-screen flex flex-col items-center justify-center"
+//     >
+//       <div class="static">
+//         <button
+//           onclick="closeFVModal()"
+//           class="absolute right-0 top-0 p-1 m-3 bg-red-500 text-white rounded-full"
+//         >
+//           <svg
+//             xmlns="http://www.w3.org/2000/svg"
+//             height="30px"
+//             viewBox="0 -960 960 960"
+//             width="30px"
+//             fill="#fff"
+//           >
+//             <path
+//               d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+//             />
+//           </svg>
+//         </button>
+//       </div>
+//       <img
+//         class="overflow-auto"
+//         src="https://drive.google.com/thumbnail?sz=h1000&id=${fileId}"
+//         alt="Faktura"
+//       />
+//     </div>`
+// }
 
 class CardColors {
   constructor(
