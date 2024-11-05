@@ -210,23 +210,24 @@ async function getFvStatusInfo(e) {
   const fvNrInputValue = formData.get('fvNrInput')
   fvSearchResults.innerHTML = ''
   startLoading()
-  const fvs = await fetchFvStatusInfo(fvNrInputValue)
-  fvs.forEach((fv) => {
-    const newDiv = createFvStatusCard(fv)
-    const firstDiv = fvSearchResults.querySelector('div')
-    fvSearchResults.insertBefore(newDiv, firstDiv)
-  })
+  const fvs = await fetchFvStatusInfo(
+    'https://ispik.fakturownia.pl/invoices.json?',
+    fvNrInputValue
+  )
+  fvs.length === 0
+    ? (fvSearchResults.innerHTML = `<p>Brak wyników dla ${fvNrInputValue}</p>`)
+    : fvs.forEach((fv) => {
+        const newDiv = createFvStatusCard(fv)
+        const firstDiv = fvSearchResults.querySelector('div')
+        fvSearchResults.insertBefore(newDiv, firstDiv)
+      })
   e.target.reset()
   endLoading()
 }
 
-async function fetchFvStatusInfo(nr) {
-  const res = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(fvs)
-    }, 2000)
-  })
-  return await res
+async function fetchFvStatusInfo(url, nr) {
+  const res = await fetch(`${url}api_token=${api_token}&number=${nr}&income=no`)
+  return await res.json()
 }
 
 function setHtmlUserInfo() {
