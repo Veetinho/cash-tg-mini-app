@@ -9,137 +9,58 @@
     <link href="styles.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Roboto&family=DM+Serif+Display"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Roboto&family=DM+Serif+Display" rel="stylesheet" />
   </head>
   <body>
     <!-- loader -->
-    <div
-      id="loader"
-      class="bg-gradient-to-t from-indigo-400/50 via-purple-300/50 to-blue-400/50 text-lg"
-    >
-      <svg
-        class="animate-spin -ml-1 mr-3 h-10 w-10 text-white"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <circle
-          class="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          stroke-width="4"
-        ></circle>
-        <path
-          class="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        ></path>
+    <div id="loader" class="bg-gradient-to-t from-indigo-400/50 via-purple-300/50 to-blue-400/50 text-lg">
+      <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
       </svg>
       <p class="text-cyan-800 font-medium text-xl">Poczekaj...</p>
     </div>
 
     <!-- modal -->
-    <div
-      id="modalFV"
-      class="fixed z-10 min-w-full bg-gradient-to-t from-indigo-400/70 via-purple-300/70 to-blue-400/70 hidden"
-    ></div>
+    <div id="modalFV" class="fixed z-10 min-w-full bg-gradient-to-t from-indigo-400/70 via-purple-300/70 to-blue-400/70 hidden"></div>
 
-    <div
-      id="container"
-      class="relative font-roboto ml-auto mr-auto overflow-y-auto w-[500px] max-w-full min-h-screen overflow-hidden"
-    >
+    <div id="container" class="relative font-roboto ml-auto mr-auto overflow-y-auto w-[500px] max-w-full min-h-screen overflow-hidden">
       <!-- first screen -->
-      <div
-        class="screen__block flex flex-col items-center justify-start px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
-      >
-        <div
-          class="flex min-w-full p-3 bg-blue-300/30 rounded-3xl shadow-inner"
-        >
-          <div
-            class="min-w-full bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 rounded-xl shadow-lg p-8"
-          >
+      <div class="screen__block flex flex-col items-center justify-start px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900">
+        <div class="flex min-w-full p-3 bg-blue-300/30 rounded-3xl shadow-inner">
+          <div class="min-w-full bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200 rounded-xl shadow-lg p-8">
             <div class="flex justify-center">
               <div class="w-24 h-24 bg-blue-400 rounded-full">
-                <svg
-                  class="stroke-slate-300"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
+                <svg class="stroke-slate-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
               </div>
             </div>
             <div class="text-center mt-4">
-              <h2 id="userFullName" class="text-2xl font-dm font-medium">
-                Vitalii Vykhrystiuk
-              </h2>
+              <h2 id="userFullName" class="text-2xl font-dm font-medium">Vitalii Vykhrystiuk</h2>
               <p class="text-base font-medium mt-2">Specjalista</p>
             </div>
           </div>
         </div>
-        <div
-          class="flex flex-col gap-3 w-full max-w-md mt-10 p-5 rounded-3xl shadow-lg bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white"
-        >
+        <div class="flex flex-col gap-3 w-full max-w-md mt-10 p-5 rounded-3xl shadow-lg bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white">
           <h3 class="font-dm text-2xl font-medium text-cyan-700">ISPIK Cash</h3>
-          <p class="text-left font-medium text-base">
-            to Telegram Mini App aplikacja, dzięki której możesz łatwiej i
-            wygodniej wymieniać się informacjami i dokumentami wewnątrz firmy
-          </p>
+          <p class="text-left font-medium text-base">to Telegram Mini App aplikacja, dzięki której możesz łatwiej i wygodniej wymieniać się informacjami i dokumentami wewnątrz firmy</p>
           <div class="mt-8 flex gap-5">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="64"
-              viewBox="0 0 73.323 64"
-              height="64"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" viewBox="0 0 73.323 64" height="64">
               <defs>
-                <linearGradient
-                  id="A"
-                  x1="31.52"
-                  y1="64.56"
-                  x2="31.52"
-                  y2="1.51"
-                  gradientUnits="userSpaceOnUse"
-                >
+                <linearGradient id="A" x1="31.52" y1="64.56" x2="31.52" y2="1.51" gradientUnits="userSpaceOnUse">
                   <stop offset=".18" stop-color="#0052cc" />
                   <stop offset="1" stop-color="#2684ff" />
                 </linearGradient>
               </defs>
-              <path
-                d="M55.16 1.5H7.88a7.88 7.88 0 0 0-5.572 2.308A7.88 7.88 0 0 0 0 9.39v47.28a7.88 7.88 0 0 0 7.88 7.88h47.28A7.88 7.88 0 0 0 63 56.67V9.4a7.88 7.88 0 0 0-7.84-7.88zM27.42 49.26A3.78 3.78 0 0 1 23.64 53H12a3.78 3.78 0 0 1-3.8-3.74V13.5A3.78 3.78 0 0 1 12 9.71h11.64a3.78 3.78 0 0 1 3.78 3.78zM54.85 33.5a3.78 3.78 0 0 1-3.78 3.78H39.4a3.78 3.78 0 0 1-3.78-3.78v-20a3.78 3.78 0 0 1 3.78-3.79h11.67a3.78 3.78 0 0 1 3.78 3.78z"
-                fill="url(#A)"
-                fill-rule="evenodd"
-                transform="matrix(1.163111 0 0 1.163111 .023263 -6.417545)"
-              />
+              <path d="M55.16 1.5H7.88a7.88 7.88 0 0 0-5.572 2.308A7.88 7.88 0 0 0 0 9.39v47.28a7.88 7.88 0 0 0 7.88 7.88h47.28A7.88 7.88 0 0 0 63 56.67V9.4a7.88 7.88 0 0 0-7.84-7.88zM27.42 49.26A3.78 3.78 0 0 1 23.64 53H12a3.78 3.78 0 0 1-3.8-3.74V13.5A3.78 3.78 0 0 1 12 9.71h11.64a3.78 3.78 0 0 1 3.78 3.78zM54.85 33.5a3.78 3.78 0 0 1-3.78 3.78H39.4a3.78 3.78 0 0 1-3.78-3.78v-20a3.78 3.78 0 0 1 3.78-3.79h11.67a3.78 3.78 0 0 1 3.78 3.78z" fill="url(#A)" fill-rule="evenodd" transform="matrix(1.163111 0 0 1.163111 .023263 -6.417545)" />
             </svg>
             <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
               <defs>
                 <clipPath id="A">
-                  <path
-                    d="M15.903 131.998c0-65.17 52.83-118 118-118s118 52.83 118 118-52.83 118-118 118-118-52.83-118-118"
-                  />
+                  <path d="M15.903 131.998c0-65.17 52.83-118 118-118s118 52.83 118 118-52.83 118-118 118-118-52.83-118-118" />
                 </clipPath>
-                <linearGradient
-                  x1="133.903"
-                  y1="13.999"
-                  x2="133.903"
-                  y2="249.999"
-                  gradientUnits="userSpaceOnUse"
-                  spreadMethod="pad"
-                  id="B"
-                >
+                <linearGradient x1="133.903" y1="13.999" x2="133.903" y2="249.999" gradientUnits="userSpaceOnUse" spreadMethod="pad" id="B">
                   <stop offset="0" stop-color="#1d93d2" />
                   <stop offset="1" stop-color="#38b0e3" />
                 </linearGradient>
@@ -148,139 +69,61 @@
                 <clipPath id="E"><path d="M0 265.9h266.987V0H0z" /></clipPath>
               </defs>
               <g transform="matrix(.271187 0 0 -.271187 -4.312678 67.796339)">
-                <path
-                  d="M15.903 131.998c0-65.17 52.83-118 118-118s118 52.83 118 118-52.83 118-118 118-118-52.83-118-118"
-                  fill="url(#B)"
-                  clip-path="url(#A)"
-                />
+                <path d="M15.903 131.998c0-65.17 52.83-118 118-118s118 52.83 118 118-52.83 118-118 118-118-52.83-118-118" fill="url(#B)" clip-path="url(#A)" />
                 <g clip-path="url(#C)">
-                  <path
-                    d="M95.778 123.374l14-38.75S111.528 81 113.403 81s29.75 29 29.75 29l31 59.875-77.875-36.5z"
-                    fill="#c8daea"
-                  />
+                  <path d="M95.778 123.374l14-38.75S111.528 81 113.403 81s29.75 29 29.75 29l31 59.875-77.875-36.5z" fill="#c8daea" />
                 </g>
                 <g clip-path="url(#D)">
-                  <path
-                    d="M114.34 113.436l-2.688-28.562s-1.125-8.75 7.625 0 17.125 15.5 17.125 15.5"
-                    fill="#a9c6d8"
-                  />
+                  <path d="M114.34 113.436l-2.688-28.562s-1.125-8.75 7.625 0 17.125 15.5 17.125 15.5" fill="#a9c6d8" />
                 </g>
                 <g clip-path="url(#E)">
-                  <path
-                    d="M96.03 121.99l-28.795 9.383s-3.437 1.395-2.333 4.562c.228.653.687 1.208 2.062 2.167 6.382 4.447 118.104 44.604 118.104 44.604s3.155 1.062 5.02.356c.852-.323 1.396-.688 1.854-2.02.167-.485.263-1.516.25-2.542-.01-.74-.1-1.425-.166-2.5-.68-10.98-21.04-92.918-21.04-92.918s-1.218-4.795-5.583-4.958c-1.592-.06-3.524.263-5.834 2.25-8.565 7.368-38.172 27.265-44.713 31.64-.37.246-.474.567-.537.88-.092.46.4 1.034.4 1.034s51.552 45.825 52.924 50.633c.106.373-.293.557-.834.396-3.424-1.26-62.78-38.74-69.33-42.88-.383-.242-1.457-.086-1.457-.086"
-                    fill="#fff"
-                  />
+                  <path d="M96.03 121.99l-28.795 9.383s-3.437 1.395-2.333 4.562c.228.653.687 1.208 2.062 2.167 6.382 4.447 118.104 44.604 118.104 44.604s3.155 1.062 5.02.356c.852-.323 1.396-.688 1.854-2.02.167-.485.263-1.516.25-2.542-.01-.74-.1-1.425-.166-2.5-.68-10.98-21.04-92.918-21.04-92.918s-1.218-4.795-5.583-4.958c-1.592-.06-3.524.263-5.834 2.25-8.565 7.368-38.172 27.265-44.713 31.64-.37.246-.474.567-.537.88-.092.46.4 1.034.4 1.034s51.552 45.825 52.924 50.633c.106.373-.293.557-.834.396-3.424-1.26-62.78-38.74-69.33-42.88-.383-.242-1.457-.086-1.457-.086" fill="#fff" />
                 </g>
               </g>
             </svg>
-            <svg
-              width="64"
-              height="64"
-              viewBox="0 -96.53 1443.061 1443.061"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill="#3777e3"
-                d="M240.525 1249.993l240.492-416.664h962.044l-240.514 416.664z"
-              />
-              <path
-                fill="#ffcf63"
-                d="M962.055 833.329h481.006L962.055 0H481.017z"
-              />
-              <path
-                fill="#11a861"
-                d="M0 833.329l240.525 416.664 481.006-833.328L481.017 0z"
-              />
+            <svg width="64" height="64" viewBox="0 -96.53 1443.061 1443.061" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#3777e3" d="M240.525 1249.993l240.492-416.664h962.044l-240.514 416.664z" />
+              <path fill="#ffcf63" d="M962.055 833.329h481.006L962.055 0H481.017z" />
+              <path fill="#11a861" d="M0 833.329l240.525 416.664 481.006-833.328L481.017 0z" />
             </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 64 88"
-              width="64"
-              height="64"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 88" width="64" height="64">
               <path d="M 42,0 64,22 53,24 42,22 40,11 Z" fill="#188038" />
-              <path
-                d="M 42,22 V 0 H 6 C 2.685,0 0,2.685 0,6 v 76 c 0,3.315 2.685,6 6,6 h 52 c 3.315,0 6,-2.685 6,-6 V 22 Z"
-                fill="#34a853"
-              />
-              <path
-                d="M 12,34 V 63 H 52 V 34 Z M 29.5,58 H 17 v -7 h 12.5 z m 0,-12 H 17 V 39 H 29.5 Z M 47,58 H 34.5 V 51 H 47 Z M 47,46 H 34.5 V 39 H 47 Z"
-                fill="#fff"
-              />
+              <path d="M 42,22 V 0 H 6 C 2.685,0 0,2.685 0,6 v 76 c 0,3.315 2.685,6 6,6 h 52 c 3.315,0 6,-2.685 6,-6 V 22 Z" fill="#34a853" />
+              <path d="M 12,34 V 63 H 52 V 34 Z M 29.5,58 H 17 v -7 h 12.5 z m 0,-12 H 17 V 39 H 29.5 Z M 47,58 H 34.5 V 51 H 47 Z M 47,46 H 34.5 V 39 H 47 Z" fill="#fff" />
             </svg>
           </div>
         </div>
         <!-- swiper -->
         <div id="swiper" class="animation-container flex mt-8">
-          <div
-            class="circle pl-3 pt-4 bg-gradient-to-r from-blue-500 to-transparent rounded-l-full"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="48px"
-              width="48px"
-              viewBox="0 -960 960 960"
-              fill="#fff"
-            >
-              <path
-                d="M419-80q-28 0-52.5-12T325-126L107-403l19-20q20-21 48-25t52 11l74 45v-328q0-17 11.5-28.5T340-760q17 0 29 11.5t12 28.5v472l-97-60 104 133q6 7 14 11t17 4h221q33 0 56.5-23.5T720-240v-160q0-17-11.5-28.5T680-440H461v-80h219q50 0 85 35t35 85v160q0 66-47 113T640-80H419ZM167-620q-13-22-20-47.5t-7-52.5q0-83 58.5-141.5T340-920q83 0 141.5 58.5T540-720q0 27-7 52.5T513-620l-69-40q8-14 12-28.5t4-31.5q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 17 4 31.5t12 28.5l-69 40Zm335 280Z"
-              />
+          <div class="circle pl-3 pt-4 bg-gradient-to-r from-blue-500 to-transparent rounded-l-full">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" width="48px" viewBox="0 -960 960 960" fill="#fff">
+              <path d="M419-80q-28 0-52.5-12T325-126L107-403l19-20q20-21 48-25t52 11l74 45v-328q0-17 11.5-28.5T340-760q17 0 29 11.5t12 28.5v472l-97-60 104 133q6 7 14 11t17 4h221q33 0 56.5-23.5T720-240v-160q0-17-11.5-28.5T680-440H461v-80h219q50 0 85 35t35 85v160q0 66-47 113T640-80H419ZM167-620q-13-22-20-47.5t-7-52.5q0-83 58.5-141.5T340-920q83 0 141.5 58.5T540-720q0 27-7 52.5T513-620l-69-40q8-14 12-28.5t4-31.5q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 17 4 31.5t12 28.5l-69 40Zm335 280Z" />
             </svg>
           </div>
         </div>
       </div>
 
       <!-- second screen -->
-      <div
-        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95%"
-      >
+      <div class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95%">
         <div class="header-card rounded-2xl my-5 p-1.5 w-full">
-          <div
-            class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3"
-          >
-            <div
-              class="absolute -top-6 left-4 bg-blue-400 px-2 text-sky-700 font-bold"
-            >
+          <div class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3">
+            <div class="absolute -top-6 left-4 bg-blue-400 px-2 text-sky-700 font-bold">
               <div class="flex flex-row items-center gap-3 w-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="36px"
-                  width="36px"
-                  viewBox="0 -960 960 960"
-                  fill="#0369a1"
-                >
-                  <path
-                    d="M160-640h640v-80H160v80Zm-80-80q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v240H160v240h164v80H160q-33 0-56.5-23.5T80-240v-480ZM598-80 428-250l56-56 114 112 226-226 56 58L598-80ZM160-720v480-180 113-413Z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" height="36px" width="36px" viewBox="0 -960 960 960" fill="#0369a1">
+                  <path d="M160-640h640v-80H160v80Zm-80-80q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v240H160v240h164v80H160q-33 0-56.5-23.5T80-240v-480ZM598-80 428-250l56-56 114 112 226-226 56 58L598-80ZM160-720v480-180 113-413Z" />
                 </svg>
                 <h3 class="text-xl font-bold">Wniosek o przelew</h3>
               </div>
             </div>
-            <div class="text-cyan-800 text-lg font-medium">
-              Tu możesz złożyć wniosek o przelew oraz zobaczyć historie twoich
-              wniosków
-            </div>
+            <div class="text-cyan-800 text-lg font-medium">Tu możesz złożyć wniosek o przelew oraz zobaczyć historie twoich wniosków</div>
           </div>
         </div>
         <!-- debit card -->
         <div class="flex w-full max-w-md mb-3 text-lg">
-          <div
-            class="flex flex-col justify-between gap-2 px-6 py-3 w-full h-full rounded-2xl aspect-[35/20] bg-gradient-to-tr from-orange-100 to-purple-200"
-          >
+          <div class="flex flex-col justify-between gap-2 px-6 py-3 w-full h-full rounded-2xl aspect-[35/20] bg-gradient-to-tr from-orange-100 to-purple-200">
             <div class="flex flex-row justify-between">
-              <img
-                class="relative h-12 mt-3"
-                src="https://ispik.pro/wp-content/uploads/2022/10/cropped-1_Primary_logo_on_transparent_1024.png"
-                alt="ISPIK logo"
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="72"
-                width="108"
-                id="svg895"
-                version="1.1"
-                viewBox="-96 -98.908 832 593.448"
-              >
+              <img class="relative h-12 mt-3" src="https://ispik.pro/wp-content/uploads/2022/10/cropped-1_Primary_logo_on_transparent_1024.png" alt="ISPIK logo" />
+              <svg xmlns="http://www.w3.org/2000/svg" height="72" width="108" id="svg895" version="1.1" viewBox="-96 -98.908 832 593.448">
                 <defs id="defs879">
                   <style id="style877" type="text/css">
                     .e {
@@ -288,73 +131,33 @@
                     }
                   </style>
                 </defs>
-                <path
-                  id="rect887"
-                  display="inline"
-                  fill="#ff5f00"
-                  stroke-width="5.494"
-                  d="M224.833 42.298h190.416v311.005H224.833z"
-                />
-                <path
-                  id="path889"
-                  d="M244.446 197.828a197.448 197.448 0 0175.54-155.475 197.777 197.777 0 100 311.004 197.448 197.448 0 01-75.54-155.53z"
-                  fill="#eb001b"
-                  stroke-width="5.494"
-                />
-                <path
-                  id="path891"
-                  d="M621.101 320.394v-6.372h2.747v-1.319h-6.537v1.319h2.582v6.373zm12.691 0v-7.69h-1.978l-2.307 5.493-2.308-5.494h-1.977v7.691h1.428v-5.823l2.143 5h1.483l2.143-5v5.823z"
-                  class="e"
-                  fill="#f79e1b"
-                  stroke-width="5.494"
-                />
-                <path
-                  id="path893"
-                  d="M640 197.828a197.777 197.777 0 01-320.015 155.474 197.777 197.777 0 000-311.004A197.777 197.777 0 01640 197.773z"
-                  class="e"
-                  fill="#f79e1b"
-                  stroke-width="5.494"
-                />
+                <path id="rect887" display="inline" fill="#ff5f00" stroke-width="5.494" d="M224.833 42.298h190.416v311.005H224.833z" />
+                <path id="path889" d="M244.446 197.828a197.448 197.448 0 0175.54-155.475 197.777 197.777 0 100 311.004 197.448 197.448 0 01-75.54-155.53z" fill="#eb001b" stroke-width="5.494" />
+                <path id="path891" d="M621.101 320.394v-6.372h2.747v-1.319h-6.537v1.319h2.582v6.373zm12.691 0v-7.69h-1.978l-2.307 5.493-2.308-5.494h-1.977v7.691h1.428v-5.823l2.143 5h1.483l2.143-5v5.823z" class="e" fill="#f79e1b" stroke-width="5.494" />
+                <path id="path893" d="M640 197.828a197.777 197.777 0 01-320.015 155.474 197.777 197.777 0 000-311.004A197.777 197.777 0 01640 197.773z" class="e" fill="#f79e1b" stroke-width="5.494" />
               </svg>
             </div>
             <div class="flex justify-between font-mono text-2xl">
-              <div>
-                <span>&#8226;</span><span>&#8226;</span><span>&#8226;</span
-                ><span>&#8226;</span>
-              </div>
-              <div>
-                <span>&#8226;</span><span>&#8226;</span><span>&#8226;</span
-                ><span>&#8226;</span>
-              </div>
-              <div>
-                <span>&#8226;</span><span>&#8226;</span><span>&#8226;</span
-                ><span>&#8226;</span>
-              </div>
+              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
+              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
+              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
               <div><p id="cardNumber">0000</p></div>
             </div>
             <div class="flex justify-start mb-2">
-              <p id="userName" class="font-mono font-medium text-2xl">
-                Nazwisko Imię
-              </p>
+              <p id="userName" class="font-mono font-medium text-2xl">Nazwisko Imię</p>
             </div>
           </div>
         </div>
 
         <!-- form -->
-        <div
-          class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
-        >
+        <div class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900">
           <div id="toggleApplicationFormButton" class="flex justify-center">
             <h3 class="font-bold mb-2 text-xl">Nowy wniosek o przelew</h3>
           </div>
           <form id="moneyTransferForm" class="space-y-2">
             <div>
               <label class="block mb-2 font-medium">Kategoria:</label>
-              <select
-                name="moneyTransferDepartment"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-                required
-              >
+              <select name="moneyTransferDepartment" class="w-full p-3 border border-gray-300 rounded-xl" required>
                 <option selected disabled value="">Wybierz kategorie</option>
                 <option value="Hostele">Hostele</option>
                 <option value="Auta">Auta</option>
@@ -366,10 +169,7 @@
             </div>
             <div id="moneyTransferObject" class="hidden">
               <label class="block mb-2 font-medium">Obiekt:</label>
-              <select
-                name="moneyTransferObject"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-              >
+              <select name="moneyTransferObject" class="w-full p-3 border border-gray-300 rounded-xl">
                 <option selected disabled value="">Wybierz obiekt</option>
                 <option value="Rutki">Rutki</option>
                 <option value="Stelpe">Stelpe</option>
@@ -378,208 +178,101 @@
             </div>
             <div>
               <label class="block mb-2 font-medium">Kwota:</label>
-              <input
-                type="number"
-                min="1"
-                step=".01"
-                name="moneyTransferAmount"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-                placeholder="Podaj kwotę"
-                required
-              />
+              <input type="number" min="1" step=".01" name="moneyTransferAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
             </div>
             <div>
               <label class="block mb-2 font-medium">Uwagi:</label>
-              <textarea
-                name="moneyTransferNote"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-                placeholder="Uwagi"
-              ></textarea>
+              <textarea name="moneyTransferNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi"></textarea>
             </div>
-            <button
-              type="submit"
-              class="w-full header-card text-white p-3 rounded-xl"
-            >
-              Zatwierdź
-            </button>
+            <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
           </form>
         </div>
 
         <!-- last applications -->
-        <div
-          id="recentRequests"
-          class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
-        >
+        <div id="recentRequests" class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900">
           <p class="text-xl font-bold mb-2">Ostatnie wnioski o przelew</p>
         </div>
       </div>
 
       <!-- third screen -->
-      <div
-        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
-      >
+      <div class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900">
         <div class="header-card rounded-2xl my-5 p-1.5 w-full">
-          <div
-            class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3"
-          >
+          <div class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3">
             <div class="absolute -top-6 left-4 bg-blue-400 px-2 font-bold">
               <div class="flex flex-row items-center gap-3 w-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="36px"
-                  width="36px"
-                  viewBox="0 -960 960 960"
-                  fill="#0369a1"
-                >
-                  <path
-                    d="M440-200h80v-40h40q17 0 28.5-11.5T600-280v-120q0-17-11.5-28.5T560-440H440v-40h160v-80h-80v-40h-80v40h-40q-17 0-28.5 11.5T360-520v120q0 17 11.5 28.5T400-360h120v40H360v80h80v40ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-480H520ZM240-800v160-160 640-640Z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" height="36px" width="36px" viewBox="0 -960 960 960" fill="#0369a1">
+                  <path d="M440-200h80v-40h40q17 0 28.5-11.5T600-280v-120q0-17-11.5-28.5T560-440H440v-40h160v-80h-80v-40h-80v40h-40q-17 0-28.5 11.5T360-520v120q0 17 11.5 28.5T400-360h120v40H360v80h80v40ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-480H520ZM240-800v160-160 640-640Z" />
                 </svg>
                 <h3 class="text-xl font-bold text-sky-700">Odszkodowanie</h3>
               </div>
             </div>
-            <div class="text-lg font-medium">
-              Tu możesz złożyć wniosek o odszkodowanie na podstawie faktury
-            </div>
+            <div class="text-lg font-medium">Tu możesz złożyć wniosek o odszkodowanie na podstawie faktury</div>
           </div>
         </div>
 
         <!-- form -->
-        <div
-          class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
-        >
+        <div class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900">
           <div id="toggleRefundFormButton" class="flex justify-center">
             <h3 class="font-bold mb-2 text-xl">Nowy wniosek o odszkodowanie</h3>
           </div>
           <form id="invoiceRefundForm" class="flex flex-col gap-4">
             <div>
               <label class="block mb-2 font-medium">Kwota:</label>
-              <input
-                type="number"
-                min="1"
-                step=".01"
-                name="invoiceRefundAmount"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-                placeholder="Podaj kwotę"
-                required
-              />
+              <input type="number" min="1" step=".01" name="invoiceRefundAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
             </div>
             <div>
               <label class="block mb-2 font-medium">Uwagi:</label>
-              <textarea
-                name="invoiceRefundNote"
-                class="w-full p-3 border border-gray-300 rounded-xl"
-                placeholder="Uwagi"
-                required
-              ></textarea>
+              <textarea name="invoiceRefundNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi" required></textarea>
             </div>
             <label for="invoiceRefundFile">
-              <div
-                class="flex flex-row items-center gap-5 p-3 border-2 border-dashed border-spacing-5 border-cyan-600 rounded-xl"
-              >
+              <div class="flex flex-row items-center gap-5 p-3 border-2 border-dashed border-spacing-5 border-cyan-600 rounded-xl">
                 <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="36px"
-                    viewBox="0 -960 960 960"
-                    width="36px"
-                    fill="#0369a1"
-                  >
-                    <path
-                      d="M640-520v-200h80v200h-80ZM440-244q-35-10-57.5-39T360-350v-370h80v476Zm30 164q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v300h-80v-300q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q25 0 47.5-6.5T560-186v89q-21 8-43.5 12.5T470-80Zm170-40v-120H520v-80h120v-120h80v120h120v80H720v120h-80Z"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#0369a1">
+                    <path d="M640-520v-200h80v200h-80ZM440-244q-35-10-57.5-39T360-350v-370h80v476Zm30 164q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v300h-80v-300q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q25 0 47.5-6.5T560-186v89q-21 8-43.5 12.5T470-80Zm170-40v-120H520v-80h120v-120h80v120h120v80H720v120h-80Z" />
                   </svg>
                 </div>
                 <div class="text-lg">
                   <span>Dodaj dokument</span>
                 </div>
-                <input
-                  type="file"
-                  id="invoiceRefundFile"
-                  style="display: none"
-                  required
-                />
+                <input type="file" id="invoiceRefundFile" style="display: none" required />
               </div>
             </label>
-            <button
-              type="submit"
-              class="w-full header-card text-white p-3 rounded-xl"
-            >
-              Zatwierdź
-            </button>
+            <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
           </form>
         </div>
         <!-- last applications -->
-        <div
-          id="recentRefundRequests"
-          class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900"
-        >
+        <div id="recentRefundRequests" class="flex flex-col w-full items-center max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900">
           <p class="text-xl font-bold mb-2">Ostatnie wnioski o odszkodowanie</p>
         </div>
       </div>
 
       <!-- fourth screen -->
-      <div
-        class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900"
-      >
+      <div class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900">
         <div class="header-card rounded-2xl my-5 p-1.5 w-full">
-          <div
-            class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3"
-          >
+          <div class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3">
             <div class="absolute -top-6 left-4 bg-blue-400 px-2 font-bold">
               <div class="flex flex-row items-center gap-3 w-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="36px"
-                  width="36px"
-                  viewBox="0 -960 960 960"
-                  fill="#0369a1"
-                >
-                  <path
-                    d="M200-800v640-640 200-200Zm80 400h147q11-23 25.5-43t32.5-37H280v80Zm0 160h123q-3-20-3-40t3-40H280v80ZM200-80q-33 0-56.5-23.5T120-160v-640q0-33 23.5-56.5T200-880h320l240 240v92q-19-6-39-9t-41-3v-40H480v-200H200v640h227q11 23 25.5 43T485-80H200Zm480-400q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480Zm0 320q11 0 18.5-7.5T706-186q0-11-7.5-18.5T680-212q-11 0-18.5 7.5T654-186q0 11 7.5 18.5T680-160Zm-18-76h36v-10q0-11 6-19.5t14-16.5q14-12 22-23t8-31q0-29-19-46.5T680-400q-23 0-41.5 13.5T612-350l32 14q3-12 12.5-21t23.5-9q15 0 23.5 7.5T712-336q0 11-6 18.5T692-302q-6 6-12.5 12T668-276q-3 6-4.5 12t-1.5 14v14Z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" height="36px" width="36px" viewBox="0 -960 960 960" fill="#0369a1">
+                  <path d="M200-800v640-640 200-200Zm80 400h147q11-23 25.5-43t32.5-37H280v80Zm0 160h123q-3-20-3-40t3-40H280v80ZM200-80q-33 0-56.5-23.5T120-160v-640q0-33 23.5-56.5T200-880h320l240 240v92q-19-6-39-9t-41-3v-40H480v-200H200v640h227q11 23 25.5 43T485-80H200Zm480-400q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480Zm0 320q11 0 18.5-7.5T706-186q0-11-7.5-18.5T680-212q-11 0-18.5 7.5T654-186q0 11 7.5 18.5T680-160Zm-18-76h36v-10q0-11 6-19.5t14-16.5q14-12 22-23t8-31q0-29-19-46.5T680-400q-23 0-41.5 13.5T612-350l32 14q3-12 12.5-21t23.5-9q15 0 23.5 7.5T712-336q0 11-6 18.5T692-302q-6 6-12.5 12T668-276q-3 6-4.5 12t-1.5 14v14Z" />
                 </svg>
                 <h3 class="text-xl font-bold text-sky-700">Status faktury</h3>
               </div>
             </div>
-            <div class="text-lg font-medium">
-              Tu możesz sprawdzić status faktury
-            </div>
+            <div class="text-lg font-medium">Tu możesz sprawdzić status faktury</div>
           </div>
         </div>
-        <div
-          class="flex flex-col w-full p-3 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200"
-        >
+        <div class="flex flex-col w-full p-3 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200">
           <h3 class="m-2 text-xl">Podaj numer faktury</h3>
           <form id="submitFvStatusForm" class="flex gap-3 w-full items-center">
-            <input
-              type="text"
-              class="w-full h-10 p-2 rounded-lg"
-              name="fvNrInput"
-              autocomplete="off"
-              required
-            />
+            <input type="text" class="w-full h-10 p-2 rounded-lg" name="fvNrInput" autocomplete="off" required />
             <button type="submit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-8 m-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 m-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
               </svg>
             </button>
           </form>
         </div>
-        <div
-          class="flex flex-col w-full p-3 my-5 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200"
-        >
+        <div class="flex flex-col w-full p-3 my-5 rounded-2xl shadow-lg bg-gradient-to-t from-blue-200 via-blue-200 to-purple-200">
           <div class="flex flex-col items-center">
             <h3 class="m-2 text-xl">Wyniki wyszukiwania</h3>
             <div id="fvSearchResults" class="flex flex-col gap-2 w-full"></div>
