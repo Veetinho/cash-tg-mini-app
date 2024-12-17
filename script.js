@@ -1,58 +1,3 @@
-const moneyApplicationData = [
-  {
-    timestamp: '1728296529786',
-    status: 'Zaakceptowane Konto osobiste',
-    moneyTransferDepartment: 'Batkowo',
-    moneyTransferAmount: 1160,
-    moneyTransferNote: 'штраф за повреждения мусорного контейнера PV BATKOWO',
-  },
-  {
-    timestamp: '1728401745838',
-    status: 'Zaakceptowane BLIK',
-    moneyTransferDepartment: 'Auta',
-    moneyTransferAmount: 500,
-    moneyTransferNote: 'заміна пильника шруса та проходження техосмотру для VW T5 номер CB629MY',
-  },
-  {
-    timestamp: '1727430165446',
-    status: 'Zaakceptowane',
-    moneyTransferDepartment: 'Hostele',
-    moneyTransferAmount: 2120,
-    moneyTransferNote: 'на хостел',
-  },
-  {
-    timestamp: '1727068371747',
-    status: 'Odrzucone',
-    moneyTransferDepartment: 'Dobiegniew 40',
-    moneyTransferAmount: 585,
-    moneyTransferNote: 'на паливо (на випадок як не буде діяти карта для заправки) і матеріали.',
-  },
-]
-
-const moneyRefundApplicationData = [
-  {
-    timestamp: '1728296529786',
-    status: 'Oczekuje',
-    invoiceRefundAmount: 320,
-    invoiceRefundNote: 'замена Резины Varanets Valerii',
-    fileId: '1zPZQ-82u2b82_Nou5XIXsL9xaaXgSpHq',
-  },
-  {
-    timestamp: '1728296529786',
-    status: 'Odrzucone',
-    invoiceRefundAmount: 38.99,
-    invoiceRefundNote: 'пистолет для пены (Kruk Nazar)',
-    fileId: '1jdFEVEapGZynhgBaf6ErvUCNdF32yRDz',
-  },
-  {
-    timestamp: '1728296529786',
-    status: 'Zaakceptowane',
-    invoiceRefundAmount: 219,
-    invoiceRefundNote: 'полоса металла для кафара YESIMCHYK MIKHAIL',
-    fileId: '1Uw5uESIycX1T_QJJoPImDdo_9gMhkVGI',
-  },
-]
-
 const _ = (id) => document.getElementById(id)
 const moneyTransferForm = _('moneyTransferForm')
 const toggleApplicationFormButton = _('toggleApplicationFormButton')
@@ -64,10 +9,10 @@ const toast = _('toast')
 
 document.addEventListener('DOMContentLoaded', async () => {
   window.Telegram.WebApp.expand()
-  setHtmlUserInfo()
+  // const data = await fetchData()
+  // if (data.status == 200) refreshLocalStorage(data)
 
-  const data = await fetchData()
-  console.log(data)
+  setHtmlUserInfo()
 
   let currentIndex = 0
   const blocks = document.querySelectorAll('.screen__block')
@@ -131,6 +76,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     _('swiper').classList.add('hidden')
   }, 6000)
 })
+
+function refreshLocalStorage(data) {
+  localStorage.setItem('refunds', JSON.stringify(data.refunds))
+  localStorage.setItem('applications', JSON.stringify(data.applications))
+  localStorage.setItem('user', JSON.stringify(data.user))
+}
 
 async function fetchData() {
   const url = 'https://script.google.com/macros/s/AKfycbyTc5QX3Ua80SV2zLvXF8g76TLPle-ADCdwmqGfIL73xhHle3j8a4fw4cYoQ6VtmEUVzg/exec?id=5692813294'
@@ -246,15 +197,22 @@ async function getFvStatusInfo(e) {
 }
 
 async function fetchFvStatusInfo(url, nr) {
-  const res = await fetch(`${url}api_token=${api_token}&number=${nr}&income=no`)
+  const res = await fetch(`${url}api_token=iHDlh5qsdbXgWtR5xxg&number=${nr}&income=no`)
   return await res.json()
 }
 
 function setHtmlUserInfo() {
-  // _('userName').innerText = userInfo.name.toUpperCase()
-  // _('cardNumber').innerText = userInfo.card.replace(/\D+/, '')
-  moneyApplicationData.sort((a, b) => +a.timestamp - +b.timestamp).forEach(addNewApplicationToList)
-  moneyRefundApplicationData.sort((a, b) => +a.timestamp - +b.timestamp).forEach(addNewRefundApplicationToList)
+  const user = JSON.parse(localStorage.getItem('user'))
+  const applications = JSON.parse(localStorage.getItem('applications'))
+  const refunds = JSON.parse(localStorage.getItem('refunds'))
+
+  _('userFullName').innerText = `${user.firstName} ${user.lastName}`
+  _('userPosition').innerText = user.position
+  _('userName').innerText = `${user.lastName.toUpperCase()} ${user.firstName.toUpperCase()}`
+  _('cardNumber').innerText = user.card.replace(/\D+/, '')
+
+  applications.sort((a, b) => new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()).forEach(addNewApplicationToList)
+  refunds.sort((a, b) => new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()).forEach(addNewRefundApplicationToList)
 }
 
 function getDataFromForm(form) {
@@ -275,27 +233,12 @@ function toggleApplicationForm(form) {
   }
 }
 
-function closeFVModal() {
-  _('modalFV').classList.add('hidden')
-}
-
-// function showFVModal(fileId) {
-//   _('modalFV').classList.remove('hidden')
-//   _('modalFV').innerHTML = createFVModalInnerHtml(fileId)
-// }
-
 function addNewApplicationToList(data) {
-  const recentRequestsBlock = _('recentRequests')
-  const newDiv = createApplicationCard(data)
-  const firstDiv = recentRequestsBlock.querySelector('div')
-  recentRequestsBlock.insertBefore(newDiv, firstDiv)
+  _('recentRequests').appendChild(createApplicationCard(data))
 }
 
 function addNewRefundApplicationToList(data) {
-  const recentRequestsBlock = _('recentRefundRequests')
-  const newDiv = createRefundApplicationCard(data)
-  const firstDiv = recentRequestsBlock.querySelector('div')
-  recentRequestsBlock.insertBefore(newDiv, firstDiv)
+  _('recentRefundRequests').appendChild(createRefundApplicationCard(data))
 }
 
 function scrollToTop(el) {
@@ -326,9 +269,9 @@ function getFormatedTime(date) {
 
 function createApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
-  const now = new Date(data.timestamp)
+  const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
-  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden', 'shadow-lg')
+  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden')
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
@@ -337,7 +280,7 @@ function createApplicationCard(data) {
           <p class="text-sm font-sans font-semibold">${data.status}</p>
         </div>
         <div>
-          <p class="text-2xl font-mono font-semibold">${formatToCurrency(data.moneyTransferAmount)}</p>
+          <p class="text-2xl font-mono font-semibold">${formatToCurrency(data.amount)}</p>
         </div>
       </div>
       <div class="flex flex-col justify-between text-right rounded-xl p-1">
@@ -348,9 +291,9 @@ function createApplicationCard(data) {
       </div>
     </div>
     <div class="text-md">
-      <p class="pt-2"><b>Kategoria (obiekt):</b> ${data.moneyTransferObject || data.moneyTransferDepartment}</p>
+      <p class="pt-2"><b>Kategoria (obiekt):</b> ${data.project || data.category}</p>
       <p class="pt-2">
-        <b>Uwagi:</b> ${data.moneyTransferNote}
+        <b>Uwagi:</b> ${data.note}
       </p>
     </div>`
   return newDiv
@@ -358,9 +301,9 @@ function createApplicationCard(data) {
 
 function createRefundApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
-  const now = new Date(data.timestamp)
+  const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
-  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden', 'shadow-lg')
+  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden', 'border', `border-${colors[0]}-300`)
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
@@ -369,7 +312,7 @@ function createRefundApplicationCard(data) {
           <p class="text-sm font-sans font-semibold">${data.status}</p>
         </div>
         <div>
-          <p class="text-2xl font-mono font-semibold">${formatToCurrency(data.invoiceRefundAmount)}</p>
+          <p class="text-2xl font-mono font-semibold">${formatToCurrency(data.amount)}</p>
         </div>
       </div>
       <div class="flex flex-col justify-between text-right rounded-xl p-1">
@@ -381,7 +324,7 @@ function createRefundApplicationCard(data) {
     </div>
     <div class="text-md">
       <p class="pt-2">
-        <b>Uwagi:</b> ${data.invoiceRefundNote}
+        <b>Uwagi:</b> ${data.note}
       </p>
     </div>
     <a href="https://drive.google.com/thumbnail?sz=h1000&id=${data.fileId}" target="_blank">
