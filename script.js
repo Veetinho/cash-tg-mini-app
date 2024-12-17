@@ -62,9 +62,13 @@ const loader = _('loader')
 const customModal = document.querySelector('.customModal')
 const toast = _('toast')
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   window.Telegram.WebApp.expand()
   setHtmlUserInfo()
+
+  const data = await fetchData()
+  console.log(data)
+
   let currentIndex = 0
   const blocks = document.querySelectorAll('.screen__block')
   const container = _('container')
@@ -127,6 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
     _('swiper').classList.add('hidden')
   }, 6000)
 })
+
+async function fetchData() {
+  const url = 'https://script.google.com/macros/s/AKfycbyTc5QX3Ua80SV2zLvXF8g76TLPle-ADCdwmqGfIL73xhHle3j8a4fw4cYoQ6VtmEUVzg/exec?id=5692813294'
+  const res = await fetch(url)
+  const json = await res.json()
+  return json
+}
 
 function showLoader() {
   loader.style.visibility = 'visible'
