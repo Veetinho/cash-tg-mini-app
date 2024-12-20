@@ -28,8 +28,8 @@
       </div>
 
       <!-- MODAL -->
-      <div class="customModal flex justify-center items-center hidden">
-        <div class="bg-slate-100 rounded-lg shadow-lg w-96 p-6 relative">
+      <div class="customModal flex justify-center items-center">
+        <div class="bg-slate-100 rounded-lg shadow-lg w-full max-w-96 p-6 relative">
           <button onclick="closeCustomModal()" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-sm text-2xl text-gray-600 duration-500 hover:bg-slate-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
               <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
@@ -37,6 +37,38 @@
           </button>
           <h2 class="text-lg text-gray-800 font-bold mb-4">Tytuł</h2>
           <p class="text-gray-600 mb-6">To jest okienko dialogowe</p>
+          <form class="space-y-2">
+            <div>
+              <label class="block mb-2 font-medium">Kategoria:</label>
+              <select name="moneyTransferDepartment" class="w-full p-3 border border-gray-300 rounded-xl" required>
+                <option selected disabled value="">Wybierz kategorie</option>
+                <option value="Hostele">Hostele</option>
+                <option value="Auta">Auta</option>
+                <option value="Elektryka">Elektryka</option>
+                <option value="Kafar">Kafar</option>
+                <option value="Prace ziemne">Prace ziemne</option>
+                <option value="Inne">Inne</option>
+              </select>
+            </div>
+            <div id="moneyTransferObject" class="hidden">
+              <label class="block mb-2 font-medium">Obiekt:</label>
+              <select name="moneyTransferObject" class="w-full p-3 border border-gray-300 rounded-xl">
+                <option selected disabled value="">Wybierz obiekt</option>
+                <option value="Rutki">Rutki</option>
+                <option value="Stelpe">Stelpe</option>
+                <option value="Osów 2">Osów 2</option>
+              </select>
+            </div>
+            <div>
+              <label class="block mb-2 font-medium">Kwota:</label>
+              <input type="number" min="1" step=".01" name="moneyTransferAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
+            </div>
+            <div>
+              <label class="block mb-2 font-medium">Uwagi:</label>
+              <textarea name="moneyTransferNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi"></textarea>
+            </div>
+            <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
+          </form>
         </div>
       </div>
 

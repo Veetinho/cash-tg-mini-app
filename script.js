@@ -1,10 +1,8 @@
 const _ = (id) => document.getElementById(id)
-const moneyTransferForm = _('moneyTransferForm')
 const toggleApplicationFormButton = _('toggleApplicationFormButton')
 const toggleRefundFormButton = _('toggleRefundFormButton')
-const fvSearchResults = _('fvSearchResults')
-const loader = _('loader')
 const customModal = document.querySelector('.customModal')
+const loader = _('loader')
 const toast = _('toast')
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -143,14 +141,16 @@ function getToastColorByStatus(status) {
   }
 }
 
-moneyTransferForm.querySelector('select').addEventListener('change', (el) => {
-  if (el.target.value === 'Inne') {
-    _('moneyTransferObject').classList.remove('hidden')
-  } else {
-    _('moneyTransferObject').classList.add('hidden')
-    document.querySelector('[name="moneyTransferObject"]').selectedIndex = 0
-  }
-})
+_('moneyTransferForm')
+  .querySelector('select')
+  .addEventListener('change', (el) => {
+    if (el.target.value === 'Inne') {
+      _('moneyTransferObject').classList.remove('hidden')
+    } else {
+      _('moneyTransferObject').classList.add('hidden')
+      document.querySelector('[name="moneyTransferObject"]').selectedIndex = 0
+    }
+  })
 
 toggleApplicationFormButton.addEventListener('click', (e) => {
   toggleApplicationForm(e.target.parentElement.parentElement.querySelector('form'))
@@ -162,8 +162,9 @@ toggleRefundFormButton.addEventListener('click', (e) => {
 
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
-moneyTransferForm.addEventListener('submit', (e) => {
+_('moneyTransferForm').addEventListener('submit', (e) => {
   e.preventDefault()
+  const moneyTransferForm = _('moneyTransferForm')
   const data = getDataFromForm(moneyTransferForm)
   addNewApplicationToList(data)
   toggleApplicationForm(moneyTransferForm)
@@ -182,6 +183,7 @@ async function getFvStatusInfo(e) {
   e.preventDefault()
   const formData = new FormData(e.target)
   const fvNrInputValue = formData.get('fvNrInput')
+  const fvSearchResults = _('fvSearchResults')
   fvSearchResults.innerHTML = ''
   showLoader()
   const fvs = await fetchFvStatusInfo('https://ispik.fakturownia.pl/invoices.json?', fvNrInputValue)
