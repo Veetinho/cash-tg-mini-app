@@ -28,9 +28,9 @@
       </div>
 
       <!-- MODAL -->
-      <div class="customModal flex justify-center items-center">
-        <div class="bg-slate-100 rounded-lg shadow-lg w-full max-w-96 p-6 relative">
-          <button onclick="closeCustomModal()" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-sm text-2xl text-gray-600 duration-500 hover:bg-slate-300">
+      <div class="modal flex justify-center items-center">
+        <div class="bg-slate-100 rounded-lg shadow-lg w-full p-6 mx-6 max-w-96 relative">
+          <button onclick="closeModal()" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-sm text-2xl text-gray-600 duration-500 hover:bg-slate-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
               <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
             </svg>
@@ -50,7 +50,7 @@
                 <option value="Inne">Inne</option>
               </select>
             </div>
-            <div id="moneyTransferObject" class="hidden">
+            <div>
               <label class="block mb-2 font-medium">Obiekt:</label>
               <select name="moneyTransferObject" class="w-full p-3 border border-gray-300 rounded-xl">
                 <option selected disabled value="">Wybierz obiekt</option>
@@ -198,7 +198,7 @@
 
         <!-- form -->
         <div class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900">
-          <div id="toggleApplicationFormButton" class="flex justify-center">
+          <div class="flex justify-center">
             <h3 class="font-bold mb-2 text-xl">Nowy wniosek o przelew</h3>
           </div>
           <form id="moneyTransferForm" class="space-y-2">

@@ -1,7 +1,5 @@
 const _ = (id) => document.getElementById(id)
-const toggleApplicationFormButton = _('toggleApplicationFormButton')
-const toggleRefundFormButton = _('toggleRefundFormButton')
-const customModal = document.querySelector('.customModal')
+const modal = document.querySelector('.modal')
 const loader = _('loader')
 const toast = _('toast')
 
@@ -96,14 +94,14 @@ function hideLoader() {
   loader.style.visibility = 'hidden'
 }
 
-function showCustomModal(title = 'Uwaga', body = 'Coś poszło nie tak') {
-  customModal.querySelector('h2').innerHTML = title
-  customModal.querySelector('p').innerHTML = body
-  customModal.classList.remove('hidden')
+function showModal(title = 'Uwaga', body = 'Coś poszło nie tak') {
+  modal.querySelector('h2').innerHTML = title
+  modal.querySelector('p').innerHTML = body
+  modal.classList.remove('hidden')
 }
 
-function closeCustomModal() {
-  customModal.classList.add('hidden')
+function closeModal() {
+  modal.classList.add('hidden')
 }
 
 function showToast(msg = 'Pomyślnie zapisane', status = 'success') {
@@ -140,25 +138,6 @@ function getToastColorByStatus(status) {
       return 'emerald'
   }
 }
-
-_('moneyTransferForm')
-  .querySelector('select')
-  .addEventListener('change', (el) => {
-    if (el.target.value === 'Inne') {
-      _('moneyTransferObject').classList.remove('hidden')
-    } else {
-      _('moneyTransferObject').classList.add('hidden')
-      document.querySelector('[name="moneyTransferObject"]').selectedIndex = 0
-    }
-  })
-
-toggleApplicationFormButton.addEventListener('click', (e) => {
-  toggleApplicationForm(e.target.parentElement.parentElement.querySelector('form'))
-})
-
-toggleRefundFormButton.addEventListener('click', (e) => {
-  toggleApplicationForm(e.target.parentElement.parentElement.querySelector('form'))
-})
 
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
