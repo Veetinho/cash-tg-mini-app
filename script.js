@@ -141,14 +141,14 @@ function getToastColorByStatus(status) {
 
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
-_('moneyTransferForm').addEventListener('submit', (e) => {
-  e.preventDefault()
-  const moneyTransferForm = _('moneyTransferForm')
-  const data = getDataFromForm(moneyTransferForm)
-  addNewApplicationToList(data)
-  toggleApplicationForm(moneyTransferForm)
-  scrollToTop(moneyTransferForm.parentElement.parentElement)
-})
+// _('moneyTransferForm').addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   const moneyTransferForm = _('moneyTransferForm')
+//   const data = getDataFromForm(moneyTransferForm)
+//   addNewApplicationToList(data)
+//   toggleApplicationForm(moneyTransferForm)
+//   scrollToTop(moneyTransferForm.parentElement.parentElement)
+// })
 
 invoiceRefundForm.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -252,7 +252,7 @@ function createApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
-  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden')
+  newDiv.classList.add('w-full', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden')
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
