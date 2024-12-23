@@ -139,6 +139,10 @@ function getToastColorByStatus(status) {
   }
 }
 
+function showNewApplicationModal() {
+  showModal('Nowy wniosek o przelew', 'Tu bedzie formularz')
+}
+
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
 // _('moneyTransferForm').addEventListener('submit', (e) => {
@@ -252,7 +256,7 @@ function createApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
-  newDiv.classList.add('w-full', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden')
+  newDiv.classList.add('w-full', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden')
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
@@ -284,7 +288,7 @@ function createRefundApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
-  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden', 'border', `border-${colors[0]}-300`)
+  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden', 'border', `border-${colors[0]}-300`)
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
