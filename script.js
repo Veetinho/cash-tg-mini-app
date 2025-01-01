@@ -143,6 +143,10 @@ function showNewApplicationModal() {
   showModal('Nowy wniosek o przelew', 'Tu bedzie formularz')
 }
 
+function showNewRefundModal() {
+  showModal('Nowy wniosek o odszkodowanie', 'Tu bedzie formularz')
+}
+
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
 // _('moneyTransferForm').addEventListener('submit', (e) => {
@@ -154,13 +158,13 @@ _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 //   scrollToTop(moneyTransferForm.parentElement.parentElement)
 // })
 
-invoiceRefundForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const data = getDataFromForm(invoiceRefundForm)
-  addNewRefundApplicationToList(data)
-  toggleApplicationForm(invoiceRefundForm)
-  scrollToTop(invoiceRefundForm.parentElement.parentElement)
-})
+// _('invoiceRefundForm').addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   const data = getDataFromForm(invoiceRefundForm)
+//   addNewRefundApplicationToList(data)
+//   toggleApplicationForm(invoiceRefundForm)
+//   scrollToTop(invoiceRefundForm.parentElement.parentElement)
+// })
 
 async function getFvStatusInfo(e) {
   e.preventDefault()
@@ -193,8 +197,11 @@ function setHtmlUserInfo() {
 
   _('userFullName').innerText = `${user.firstName} ${user.lastName}`
   _('userPosition').innerText = user.position
-  _('userName').innerText = `${user.lastName.toUpperCase()} ${user.firstName.toUpperCase()}`
-  _('cardNumber').innerText = user.card.replace(/\D+/, '')
+
+  if (user.card !== '0000') {
+    _('userName').innerText = `${user.lastName.toUpperCase()} ${user.firstName.toUpperCase()}`
+    _('cardNumber').innerText = user.card.replace(/\D+/, '')
+  }
 
   applications.sort((a, b) => new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()).forEach(addNewApplicationToList)
   refunds.sort((a, b) => new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()).forEach(addNewRefundApplicationToList)
@@ -257,8 +264,7 @@ function createApplicationCard(data) {
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
   newDiv.classList.add('w-full', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden')
-  newDiv.innerHTML = `
-    <div class="flex justify-between">
+  newDiv.innerHTML = `<div class="flex justify-between">
       <div class="flex flex-col justify-between">
         <div class="flex gap-2 px-2 py-1 items-center bg-${colors[0]}-200 rounded-full">
           <div class="w-3 h-3 rounded-full bg-${colors[0]}-900"></div>
@@ -276,7 +282,8 @@ function createApplicationCard(data) {
       </div>
     </div>
     <div class="text-md">
-      <p class="pt-2"><b>Kategoria (obiekt):</b> ${data.project || data.category}</p>
+      <p class="pt-2"><b>Kategoria: </b> ${data.category || 'Inne'}</p>
+      <p class="pt-2"><b>Obiekt: </b> ${data.project || 'Inny'}</p>
       <p class="pt-2">
         <b>Uwagi:</b> ${data.note}
       </p>
