@@ -17,30 +17,6 @@ label:has(+ [required])::after {
   color: red;
 }
 
-#moneyTransferForm {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-#moneyTransferForm.open {
-  max-height: 600px;
-  opacity: 1;
-}
-
-#invoiceRefundForm {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-#invoiceRefundForm.open {
-  max-height: 600px;
-  opacity: 1;
-}
-
 .font-roboto {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;

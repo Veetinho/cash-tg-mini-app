@@ -140,11 +140,71 @@ function getToastColorByStatus(status) {
 }
 
 function showNewApplicationModal() {
-  showModal('Nowy wniosek o przelew', 'Tu bedzie formularz')
+  showModal(
+    'Nowy wniosek o przelew',
+    `<form class="space-y-2">
+      <div>
+        <label class="block mb-2 font-medium">Kategoria:</label>
+        <select name="moneyTransferDepartment" class="w-full p-3 border border-gray-300 rounded-xl" required>
+          <option selected disabled value="">Wybierz kategorie</option>
+          <option value="Hostele">Hostele</option>
+          <option value="Auta">Auta</option>
+          <option value="Elektryka">Elektryka</option>
+          <option value="Kafar">Kafar</option>
+          <option value="Prace ziemne">Prace ziemne</option>
+          <option value="Inne">Inne</option>
+        </select>
+      </div>
+      <div>
+        <label class="block mb-2 font-medium">Obiekt:</label>
+        <select name="moneyTransferObject" class="w-full p-3 border border-gray-300 rounded-xl">
+          <option selected disabled value="">Wybierz obiekt</option>
+          <option value="Rutki">Rutki</option>
+          <option value="Stelpe">Stelpe</option>
+          <option value="Osów 2">Osów 2</option>
+        </select>
+      </div>
+      <div>
+        <label class="block mb-2 font-medium">Kwota:</label>
+        <input type="number" min="1" step=".01" name="moneyTransferAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
+      </div>
+      <div>
+        <label class="block mb-2 font-medium">Uwagi:</label>
+        <textarea name="moneyTransferNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi"></textarea>
+      </div>
+      <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
+    </form>`
+  )
 }
 
 function showNewRefundModal() {
-  showModal('Nowy wniosek o odszkodowanie', 'Tu bedzie formularz')
+  showModal(
+    'Nowy wniosek o odszkodowanie',
+    `<form id="invoiceRefundForm" class="flex flex-col gap-4">
+      <div>
+        <label class="block mb-2 font-medium">Kwota:</label>
+        <input type="number" min="1" step=".01" name="invoiceRefundAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
+      </div>
+      <div>
+        <label class="block mb-2 font-medium">Uwagi:</label>
+        <textarea name="invoiceRefundNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi" required></textarea>
+      </div>
+      <label for="invoiceRefundFile">
+        <div class="flex flex-row items-center gap-5 p-3 border-2 border-dashed border-spacing-5 border-cyan-600 rounded-xl">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#0369a1">
+              <path d="M640-520v-200h80v200h-80ZM440-244q-35-10-57.5-39T360-350v-370h80v476Zm30 164q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v300h-80v-300q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q25 0 47.5-6.5T560-186v89q-21 8-43.5 12.5T470-80Zm170-40v-120H520v-80h120v-120h80v120h120v80H720v120h-80Z" />
+            </svg>
+          </div>
+          <div class="text-lg">
+            <span>Dodaj dokument</span>
+          </div>
+          <input type="file" id="invoiceRefundFile" style="display: none" required />
+        </div>
+      </label>
+      <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
+    </form>`
+  )
 }
 
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
