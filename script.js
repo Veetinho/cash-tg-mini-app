@@ -102,6 +102,8 @@ function showModal(title = 'Uwaga', body = 'Coś poszło nie tak') {
 
 function closeModal() {
   modal.classList.add('hidden')
+  modal.querySelector('#modalHeader').innerText = 'Uwaga'
+  modal.querySelector('#modalBody').innerHTML = 'Coś poszło nie tak'
 }
 
 function showToast(msg = 'Pomyślnie zapisane', status = 'success') {
