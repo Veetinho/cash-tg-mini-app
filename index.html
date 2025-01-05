@@ -30,107 +30,37 @@
       <!-- MODAL -->
       <div class="modal flex justify-center items-center hidden">
         <div class="bg-slate-100 rounded-lg shadow-lg w-full p-6 mx-6 max-w-96 relative shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-violet-100 text-cyan-900">
-          <button onclick="closeModal()" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-sm text-2xl text-gray-600 duration-500 hover:bg-slate-300">
+          <button onclick="closeModal()" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-sm text-2xl text-gray-600 duration-500 hover:bg-violet-100">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
               <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
             </svg>
           </button>
-          <h2 id="modalHeader" class="text-lg text-gray-800 font-bold mb-4">Tytuł</h2>
+          <h2 id="modalHeader" class="text-lg text-cyan-800 font-bold mb-4">Tytuł</h2>
           <div id="modalBody">To jest okienko dialogowe</div>
         </div>
       </div>
 
-      <!-- second screen -->
-      <div class="screen__block flex flex-col items-center px-2 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95%">
+      <!-- third screen -->
+      <div class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900">
         <div class="header-card rounded-2xl my-5 p-1.5 w-full max-w-md">
           <div class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3">
-            <div class="absolute -top-6 left-4 bg-blue-400 px-2 text-sky-700 font-bold">
+            <div class="absolute -top-6 left-4 bg-blue-400 px-2 font-bold">
               <div class="flex flex-row items-center gap-3 w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" height="36px" width="36px" viewBox="0 -960 960 960" fill="#0369a1">
-                  <path d="M160-640h640v-80H160v80Zm-80-80q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v240H160v240h164v80H160q-33 0-56.5-23.5T80-240v-480ZM598-80 428-250l56-56 114 112 226-226 56 58L598-80ZM160-720v480-180 113-413Z" />
+                  <path d="M440-200h80v-40h40q17 0 28.5-11.5T600-280v-120q0-17-11.5-28.5T560-440H440v-40h160v-80h-80v-40h-80v40h-40q-17 0-28.5 11.5T360-520v120q0 17 11.5 28.5T400-360h120v40H360v80h80v40ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-480H520ZM240-800v160-160 640-640Z" />
                 </svg>
-                <h3 class="text-xl font-bold">Wniosek o przelew</h3>
+                <h3 class="text-xl font-bold text-sky-700">Odszkodowanie</h3>
               </div>
             </div>
-            <div class="text-cyan-800 text-lg font-medium">Tu możesz złożyć wniosek o przelew oraz zobaczyć historie twoich wniosków</div>
+            <div class="text-lg font-medium">Tu możesz złożyć wniosek o odszkodowanie na podstawie faktury</div>
           </div>
         </div>
-        <!-- debit card -->
-        <div class="flex w-full max-w-md mb-3 text-lg">
-          <div class="flex flex-col justify-between gap-2 px-6 py-3 w-full h-full rounded-2xl aspect-[35/20] bg-gradient-to-tr from-orange-100 to-purple-200">
-            <div class="flex flex-row justify-between">
-              <img class="relative h-12 mt-3" src="https://ispik.pro/wp-content/uploads/2022/10/cropped-1_Primary_logo_on_transparent_1024.png" alt="ISPIK logo" />
-              <svg xmlns="http://www.w3.org/2000/svg" height="72" width="108" id="svg895" version="1.1" viewBox="-96 -98.908 832 593.448">
-                <defs id="defs879">
-                  <style id="style877" type="text/css">
-                    .e {
-                      fill: #f79e1b;
-                    }
-                  </style>
-                </defs>
-                <path id="rect887" display="inline" fill="#ff5f00" stroke-width="5.494" d="M224.833 42.298h190.416v311.005H224.833z" />
-                <path id="path889" d="M244.446 197.828a197.448 197.448 0 0175.54-155.475 197.777 197.777 0 100 311.004 197.448 197.448 0 01-75.54-155.53z" fill="#eb001b" stroke-width="5.494" />
-                <path id="path891" d="M621.101 320.394v-6.372h2.747v-1.319h-6.537v1.319h2.582v6.373zm12.691 0v-7.69h-1.978l-2.307 5.493-2.308-5.494h-1.977v7.691h1.428v-5.823l2.143 5h1.483l2.143-5v5.823z" class="e" fill="#f79e1b" stroke-width="5.494" />
-                <path id="path893" d="M640 197.828a197.777 197.777 0 01-320.015 155.474 197.777 197.777 0 000-311.004A197.777 197.777 0 01640 197.773z" class="e" fill="#f79e1b" stroke-width="5.494" />
-              </svg>
-            </div>
-            <div class="flex justify-between font-mono text-2xl">
-              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
-              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
-              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
-              <div><p id="cardNumber">0000</p></div>
-            </div>
-            <div class="flex justify-start mb-2">
-              <p id="userName" class="font-mono font-medium text-2xl">Nazwisko Imię</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- form -->
-        <!-- <div class="flex flex-col w-full text-md max-w-md my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900">
-          <div class="flex justify-center">
-            <h3 class="font-bold mb-2 text-xl">Nowy wniosek o przelew</h3>
-          </div>
-          <form id="moneyTransferForm" class="space-y-2">
-            <div>
-              <label class="block mb-2 font-medium">Kategoria:</label>
-              <select name="moneyTransferDepartment" class="w-full p-3 border border-gray-300 rounded-xl" required>
-                <option selected disabled value="">Wybierz kategorie</option>
-                <option value="Hostele">Hostele</option>
-                <option value="Auta">Auta</option>
-                <option value="Elektryka">Elektryka</option>
-                <option value="Kafar">Kafar</option>
-                <option value="Prace ziemne">Prace ziemne</option>
-                <option value="Inne">Inne</option>
-              </select>
-            </div>
-            <div id="moneyTransferObject" class="hidden">
-              <label class="block mb-2 font-medium">Obiekt:</label>
-              <select name="moneyTransferObject" class="w-full p-3 border border-gray-300 rounded-xl">
-                <option selected disabled value="">Wybierz obiekt</option>
-                <option value="Rutki">Rutki</option>
-                <option value="Stelpe">Stelpe</option>
-                <option value="Osów 2">Osów 2</option>
-              </select>
-            </div>
-            <div>
-              <label class="block mb-2 font-medium">Kwota:</label>
-              <input type="number" min="1" step=".01" name="moneyTransferAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
-            </div>
-            <div>
-              <label class="block mb-2 font-medium">Uwagi:</label>
-              <textarea name="moneyTransferNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi"></textarea>
-            </div>
-            <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
-          </form>
-        </div> -->
-
         <!-- last applications -->
-        <div id="recentRequests" class="flex flex-col w-full items-center max-w-md my-2 p-3 rounded-2xl border-2 border-cyan-600 border-dashed bg-transparent text-cyan-700">
+        <div id="recentRefundRequests" class="flex flex-col w-full items-center max-w-md p-3 rounded-2xl border-2 border-cyan-600 border-dashed bg-transparent text-cyan-700">
           <div class="w-full flex flex-row justify-between items-center mb-4">
             <div class="text-xl font-bold">Ostatnie wnioski</div>
-            <div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-xl header-card" onclick="showNewApplicationModal()">
-              <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="white"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v240H160v240h400v80H160Zm0-480h640v-80H160v80ZM760-80v-120H640v-80h120v-120h80v120h120v80H840v120h-80ZM160-240v-480 480Z" /></svg>
+            <div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-xl header-card" onclick="showNewRefundModal()">
+              <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="white"><path d="M440-240h80v-120h120v-80H520v-120h-80v120H320v80h120v120ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" /></svg>
               <p class="text-xl text-white font-bold">Nowy</p>
             </div>
           </div>
@@ -215,59 +145,57 @@
         </div>
       </div>
 
-      <!-- third screen -->
-      <div class="screen__block flex flex-col items-center px-3 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95% text-cyan-900">
+      <!-- second screen -->
+      <div class="screen__block flex flex-col items-center px-2 py-4 bg-gradient-to-t from-indigo-400 via-purple-300 to-blue-400 to-95%">
         <div class="header-card rounded-2xl my-5 p-1.5 w-full max-w-md">
           <div class="relative bg-gradient-to-b from-blue-400 via-blue-400 via-30% to-indigo-300 rounded-xl p-3">
-            <div class="absolute -top-6 left-4 bg-blue-400 px-2 font-bold">
+            <div class="absolute -top-6 left-4 bg-blue-400 px-2 text-sky-700 font-bold">
               <div class="flex flex-row items-center gap-3 w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" height="36px" width="36px" viewBox="0 -960 960 960" fill="#0369a1">
-                  <path d="M440-200h80v-40h40q17 0 28.5-11.5T600-280v-120q0-17-11.5-28.5T560-440H440v-40h160v-80h-80v-40h-80v40h-40q-17 0-28.5 11.5T360-520v120q0 17 11.5 28.5T400-360h120v40H360v80h80v40ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-480H520ZM240-800v160-160 640-640Z" />
+                  <path d="M160-640h640v-80H160v80Zm-80-80q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v240H160v240h164v80H160q-33 0-56.5-23.5T80-240v-480ZM598-80 428-250l56-56 114 112 226-226 56 58L598-80ZM160-720v480-180 113-413Z" />
                 </svg>
-                <h3 class="text-xl font-bold text-sky-700">Odszkodowanie</h3>
+                <h3 class="text-xl font-bold">Wniosek o przelew</h3>
               </div>
             </div>
-            <div class="text-lg font-medium">Tu możesz złożyć wniosek o odszkodowanie na podstawie faktury</div>
+            <div class="text-cyan-800 text-lg font-medium">Tu możesz złożyć wniosek o przelew oraz zobaczyć historie twoich wniosków</div>
           </div>
         </div>
-
-        <!-- form -->
-        <!-- <div class="flex flex-col w-full text-md max-w-md mx-auto my-3 px-3 py-3 rounded-2xl shadow-lg shadow-indigo-500/40 bg-gradient-to-b from-blue-200 via-fuchsia-200 to-white text-cyan-900">
-          <div id="toggleRefundFormButton" class="flex justify-center">
-            <h3 class="font-bold mb-2 text-xl">Nowy wniosek o odszkodowanie</h3>
+        <!-- debit card -->
+        <div class="flex w-full max-w-md mb-3 text-lg">
+          <div class="flex flex-col justify-between gap-2 px-6 py-3 w-full h-full rounded-2xl aspect-[35/20] bg-gradient-to-tr from-orange-100 to-purple-200">
+            <div class="flex flex-row justify-between">
+              <img class="relative h-12 mt-3" src="https://ispik.pro/wp-content/uploads/2022/10/cropped-1_Primary_logo_on_transparent_1024.png" alt="ISPIK logo" />
+              <svg xmlns="http://www.w3.org/2000/svg" height="72" width="108" id="svg895" version="1.1" viewBox="-96 -98.908 832 593.448">
+                <defs id="defs879">
+                  <style id="style877" type="text/css">
+                    .e {
+                      fill: #f79e1b;
+                    }
+                  </style>
+                </defs>
+                <path id="rect887" display="inline" fill="#ff5f00" stroke-width="5.494" d="M224.833 42.298h190.416v311.005H224.833z" />
+                <path id="path889" d="M244.446 197.828a197.448 197.448 0 0175.54-155.475 197.777 197.777 0 100 311.004 197.448 197.448 0 01-75.54-155.53z" fill="#eb001b" stroke-width="5.494" />
+                <path id="path891" d="M621.101 320.394v-6.372h2.747v-1.319h-6.537v1.319h2.582v6.373zm12.691 0v-7.69h-1.978l-2.307 5.493-2.308-5.494h-1.977v7.691h1.428v-5.823l2.143 5h1.483l2.143-5v5.823z" class="e" fill="#f79e1b" stroke-width="5.494" />
+                <path id="path893" d="M640 197.828a197.777 197.777 0 01-320.015 155.474 197.777 197.777 0 000-311.004A197.777 197.777 0 01640 197.773z" class="e" fill="#f79e1b" stroke-width="5.494" />
+              </svg>
+            </div>
+            <div class="flex justify-between font-mono text-2xl">
+              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
+              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
+              <div><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></div>
+              <div><p id="cardNumber">0000</p></div>
+            </div>
+            <div class="flex justify-start mb-2">
+              <p id="userName" class="font-mono font-medium text-2xl">Nazwisko Imię</p>
+            </div>
           </div>
-          <form id="invoiceRefundForm" class="flex flex-col gap-4">
-            <div>
-              <label class="block mb-2 font-medium">Kwota:</label>
-              <input type="number" min="1" step=".01" name="invoiceRefundAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
-            </div>
-            <div>
-              <label class="block mb-2 font-medium">Uwagi:</label>
-              <textarea name="invoiceRefundNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi" required></textarea>
-            </div>
-            <label for="invoiceRefundFile">
-              <div class="flex flex-row items-center gap-5 p-3 border-2 border-dashed border-spacing-5 border-cyan-600 rounded-xl">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#0369a1">
-                    <path d="M640-520v-200h80v200h-80ZM440-244q-35-10-57.5-39T360-350v-370h80v476Zm30 164q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v300h-80v-300q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q25 0 47.5-6.5T560-186v89q-21 8-43.5 12.5T470-80Zm170-40v-120H520v-80h120v-120h80v120h120v80H720v120h-80Z" />
-                  </svg>
-                </div>
-                <div class="text-lg">
-                  <span>Dodaj dokument</span>
-                </div>
-                <input type="file" id="invoiceRefundFile" style="display: none" required />
-              </div>
-            </label>
-            <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
-          </form>
-        </div> -->
-
+        </div>
         <!-- last applications -->
-        <div id="recentRefundRequests" class="flex flex-col w-full items-center max-w-md p-3 rounded-2xl border-2 border-cyan-600 border-dashed bg-transparent text-cyan-700">
-          <div class="w-full flex flex-row justify-between items-center mb-4">
+        <div id="recentRequests" class="flex flex-col w-full items-center max-w-md my-2 p-3 rounded-2xl border-2 border-cyan-600 border-dashed bg-transparent text-cyan-700">
+          <div class="w-full flex flex-row justify-between items-center mb-2">
             <div class="text-xl font-bold">Ostatnie wnioski</div>
-            <div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-xl header-card" onclick="showNewRefundModal()">
-              <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="white"><path d="M440-240h80v-120h120v-80H520v-120h-80v120H320v80h120v120ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" /></svg>
+            <div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-xl header-card" onclick="showNewApplicationModal()">
+              <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="white"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v240H160v240h400v80H160Zm0-480h640v-80H160v80ZM760-80v-120H640v-80h120v-120h80v120h120v80H840v120h-80ZM160-240v-480 480Z" /></svg>
               <p class="text-xl text-white font-bold">Nowy</p>
             </div>
           </div>

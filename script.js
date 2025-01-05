@@ -144,10 +144,10 @@ function getToastColorByStatus(status) {
 function showNewApplicationModal() {
   showModal(
     'Nowy wniosek o przelew',
-    `<form class="space-y-2">
+    `<form class="space-y-2" onsubmit="submitNewApplication(event)">
       <div>
         <label class="block mb-2 font-medium">Kategoria:</label>
-        <select name="moneyTransferDepartment" class="w-full p-3 border border-gray-300 rounded-xl" required>
+        <select name="category" class="w-full p-3 border-2 border-blue-300 rounded-xl" required>
           <option selected disabled value="">Wybierz kategorie</option>
           <option value="Hostele">Hostele</option>
           <option value="Auta">Auta</option>
@@ -159,7 +159,7 @@ function showNewApplicationModal() {
       </div>
       <div>
         <label class="block mb-2 font-medium">Obiekt:</label>
-        <select name="moneyTransferObject" class="w-full p-3 border border-gray-300 rounded-xl">
+        <select name="project" class="w-full p-3 border-2 border-blue-300 rounded-xl" required>
           <option selected disabled value="">Wybierz obiekt</option>
           <option value="Rutki">Rutki</option>
           <option value="Stelpe">Stelpe</option>
@@ -168,11 +168,11 @@ function showNewApplicationModal() {
       </div>
       <div>
         <label class="block mb-2 font-medium">Kwota:</label>
-        <input type="number" min="1" step=".01" name="moneyTransferAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
+        <input type="number" min="1" step=".01" name="amount" class="w-full p-3 border-2 border-blue-300 rounded-xl" placeholder="Podaj kwotę" required />
       </div>
       <div>
         <label class="block mb-2 font-medium">Uwagi:</label>
-        <textarea name="moneyTransferNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi"></textarea>
+        <textarea name="note" class="w-full p-3 border-2 border-blue-300 rounded-xl" placeholder="Uwagi" required></textarea>
       </div>
       <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
     </form>`
@@ -182,14 +182,14 @@ function showNewApplicationModal() {
 function showNewRefundModal() {
   showModal(
     'Nowy wniosek o odszkodowanie',
-    `<form id="invoiceRefundForm" class="flex flex-col gap-4">
+    `<form class="flex flex-col gap-4" onsubmit="submitNewRefund(event)">
       <div>
         <label class="block mb-2 font-medium">Kwota:</label>
-        <input type="number" min="1" step=".01" name="invoiceRefundAmount" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Podaj kwotę" required />
+        <input type="number" min="1" step=".01" name="amount" class="w-full p-3 border-2 border-blue-300 rounded-xl" placeholder="Podaj kwotę" required />
       </div>
       <div>
         <label class="block mb-2 font-medium">Uwagi:</label>
-        <textarea name="invoiceRefundNote" class="w-full p-3 border border-gray-300 rounded-xl" placeholder="Uwagi" required></textarea>
+        <textarea name="note" class="w-full p-3 border-2 border-blue-300 rounded-xl" placeholder="Uwagi" required></textarea>
       </div>
       <label for="invoiceRefundFile">
         <div class="flex flex-row items-center gap-5 p-3 border-2 border-dashed border-spacing-5 border-cyan-600 rounded-xl">
@@ -201,7 +201,7 @@ function showNewRefundModal() {
           <div class="text-lg">
             <span>Dodaj dokument</span>
           </div>
-          <input type="file" id="invoiceRefundFile" style="display: none" required />
+          <input type="file" accept="image/png, image/jpeg, application/pdf" id="invoiceRefundFile" onchange="onchangeFileInput(event)" style="display: none" required />
         </div>
       </label>
       <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
@@ -211,22 +211,29 @@ function showNewRefundModal() {
 
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
-// _('moneyTransferForm').addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   const moneyTransferForm = _('moneyTransferForm')
-//   const data = getDataFromForm(moneyTransferForm)
-//   addNewApplicationToList(data)
-//   toggleApplicationForm(moneyTransferForm)
-//   scrollToTop(moneyTransferForm.parentElement.parentElement)
-// })
+function submitNewApplication(e) {
+  e.preventDefault()
+  const data = getDataFromForm(e.target)
+  closeModal()
+  addNewApplicationToList(data)
+  scrollToTop(_('recentRequests').parentElement)
+}
 
-// _('invoiceRefundForm').addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   const data = getDataFromForm(invoiceRefundForm)
-//   addNewRefundApplicationToList(data)
-//   toggleApplicationForm(invoiceRefundForm)
-//   scrollToTop(invoiceRefundForm.parentElement.parentElement)
-// })
+function submitNewRefund(e) {
+  e.preventDefault()
+  const data = getDataFromForm(e.target)
+  closeModal()
+  addNewRefundApplicationToList(data)
+  scrollToTop(_('recentRefundRequests').parentElement)
+}
+
+function onchangeFileInput(e) {
+  e.preventDefault()
+  const fileName = e.target.value
+  const regex = /[^\\]+$/gi
+  e.target.parentNode.querySelector('span').textContent = fileName.match(regex)[0]
+  console.log(fileName.match(regex)[0])
+}
 
 async function getFvStatusInfo(e) {
   e.preventDefault()
@@ -273,26 +280,19 @@ function getDataFromForm(form) {
   const formData = new FormData(form)
   const obj = {}
   for (const [key, value] of formData.entries()) obj[key] = value
-  obj.timestamp = Date.now()
+  obj.modifiedAt = Date.now()
   obj.status = 'Oczekuje'
   return obj
 }
 
-function toggleApplicationForm(form) {
-  if (form.classList.contains('open')) {
-    form.classList.remove('open')
-  } else {
-    form.classList.add('open')
-    form.reset()
-  }
-}
-
 function addNewApplicationToList(data) {
-  _('recentRequests').appendChild(createApplicationCard(data))
+  const recentRequests = _('recentRequests')
+  recentRequests.insertBefore(createApplicationCard(data), recentRequests.querySelector('.p-3'))
 }
 
 function addNewRefundApplicationToList(data) {
-  _('recentRefundRequests').appendChild(createRefundApplicationCard(data))
+  const recentRefundRequests = _('recentRefundRequests')
+  recentRefundRequests.insertBefore(createRefundApplicationCard(data), recentRefundRequests.querySelector('.p-3'))
 }
 
 function scrollToTop(el) {
@@ -325,7 +325,7 @@ function createApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
-  newDiv.classList.add('w-full', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden')
+  newDiv.classList.add('w-full', 'p-3', 'mt-2', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden')
   newDiv.innerHTML = `<div class="flex justify-between">
       <div class="flex flex-col justify-between">
         <div class="flex gap-2 px-2 py-1 items-center bg-${colors[0]}-200 rounded-full">
@@ -485,6 +485,3 @@ class CardColors {
     this.txt = txt
   }
 }
-
-//new CardColors('from-green-300', 'to-teal-100', 'bg-green-900', 'bg-green-300', 'text-green-900')
-//new CardColors('from-red-200', 'to-orange-50', 'bg-red-950', 'bg-red-200', 'text-red-950')

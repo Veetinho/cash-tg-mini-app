@@ -135,3 +135,9 @@ label:has(+ [required])::after {
   height: 100vh;
   background-color: rgba(148, 163, 184, 0.7);
 }
+
+.modal select,
+input,
+textarea {
+  background: linear-gradient(315deg, rgba(239, 246, 255, 1) 0%, rgba(253, 244, 255, 1) 100%);
+}
