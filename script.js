@@ -184,7 +184,7 @@ function showNewRefundModal() {
     'Nowy wniosek o odszkodowanie',
     `<form class="flex flex-col gap-4" onsubmit="submitNewRefund(event)">
       <div>
-        <label class="block mb-2 font-medium">Kwota:</label>
+        <label class="block mt-2 font-medium">Kwota:</label>
         <input type="number" min="1" step=".01" name="amount" class="w-full p-3 border-2 border-blue-300 rounded-xl" placeholder="Podaj kwotę" required />
       </div>
       <div>
@@ -217,7 +217,7 @@ function submitNewApplication(e) {
   closeModal()
   addNewApplicationToList(data)
   scrollToTop(_('recentRequests').parentElement)
-  setTimeout(() => changeCardStatusById(data.id, 'Oczekuje'), 1000)
+  setTimeout(() => changeCardStatusById(data.id, 'Oczekuje'), 4000)
 }
 
 function submitNewRefund(e) {
@@ -226,11 +226,13 @@ function submitNewRefund(e) {
   closeModal()
   addNewRefundApplicationToList(data)
   scrollToTop(_('recentRefundRequests').parentElement)
-  setTimeout(() => changeCardStatusById(data.id, 'Oczekuje'), 1000)
+  setTimeout(() => changeCardStatusById(data.id, 'Oczekuje'), 4000)
 }
 
 function changeCardStatusById(id, status) {
   const card = document.getElementById(id)
+  const dot = card.querySelector('.rounded-full .hidden')
+  if (dot) dot.classList.remove('hidden')
   card.querySelector('p').innerText = status
   const spin = card.querySelector('.animate-spin')
   if (spin) spin.remove()
@@ -340,8 +342,8 @@ function createApplicationCard(data) {
   newDiv.innerHTML = `<div class="flex justify-between">
       <div class="flex flex-col justify-between">
         <div class="flex gap-2 px-2 py-1 items-center bg-${colors[0]}-200 rounded-full">
-          <div class="w-3 h-3 rounded-full bg-${colors[0]}-900"></div>
-          ${data.status === 'W trakcie' ? '<svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>' : ''}
+          <div class="${data.status === 'W trakcie' && 'hidden'} w-3 h-3 rounded-full bg-${colors[0]}-900"></div>
+          ${data.status === 'W trakcie' ? `<svg class="animate-spin h-6 w-6 text-${colors[0]}-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>` : ''}
           <p class="text-sm font-sans font-semibold">${data.status}</p>
         </div>
         <div>
@@ -370,13 +372,13 @@ function createRefundApplicationCard(data) {
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
   newDiv.setAttribute('id', data.id)
-  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden', 'border', `border-${colors[0]}-300`)
+  newDiv.classList.add('w-full', 'mt-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden', 'border', `border-${colors[0]}-300`)
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
         <div class="flex gap-2 px-2 py-1 items-center bg-${colors[0]}-200 rounded-full">
           <div class="w-3 h-3 rounded-full bg-${colors[0]}-900"></div>
-          ${data.status === 'W trakcie' ? '<svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>' : ''}
+          ${data.status === 'W trakcie' ? `<svg class="animate-spin h-6 w-6 text-${colors[0]}-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>` : ''}
           <p class="text-sm font-sans font-semibold">${data.status}</p>
         </div>
         <div>
