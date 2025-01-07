@@ -217,6 +217,7 @@ function submitNewApplication(e) {
   closeModal()
   addNewApplicationToList(data)
   scrollToTop(_('recentRequests').parentElement)
+  setTimeout(() => changeCardStatusById(data.id, 'Oczekuje'), 1000)
 }
 
 function submitNewRefund(e) {
@@ -225,6 +226,14 @@ function submitNewRefund(e) {
   closeModal()
   addNewRefundApplicationToList(data)
   scrollToTop(_('recentRefundRequests').parentElement)
+  setTimeout(() => changeCardStatusById(data.id, 'Oczekuje'), 1000)
+}
+
+function changeCardStatusById(id, status) {
+  const card = document.getElementById(id)
+  card.querySelector('p').innerText = status
+  const spin = card.querySelector('.animate-spin')
+  if (spin) spin.remove()
 }
 
 function onchangeFileInput(e) {
@@ -281,6 +290,7 @@ function getDataFromForm(form) {
   const obj = {}
   for (const [key, value] of formData.entries()) obj[key] = value
   obj.modifiedAt = Date.now()
+  obj.id = Date.now()
   obj.status = 'W trakcie'
   return obj
 }
@@ -325,6 +335,7 @@ function createApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
+  newDiv.setAttribute('id', data.id)
   newDiv.classList.add('w-full', 'p-3', 'mt-2', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden')
   newDiv.innerHTML = `<div class="flex justify-between">
       <div class="flex flex-col justify-between">
@@ -358,12 +369,14 @@ function createRefundApplicationCard(data) {
   const colors = getCardColorsByStatus(data.status)
   const now = new Date(data.modifiedAt)
   const newDiv = document.createElement('div')
+  newDiv.setAttribute('id', data.id)
   newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden', 'border', `border-${colors[0]}-300`)
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex flex-col justify-between">
         <div class="flex gap-2 px-2 py-1 items-center bg-${colors[0]}-200 rounded-full">
           <div class="w-3 h-3 rounded-full bg-${colors[0]}-900"></div>
+          ${data.status === 'W trakcie' ? '<svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>' : ''}
           <p class="text-sm font-sans font-semibold">${data.status}</p>
         </div>
         <div>
