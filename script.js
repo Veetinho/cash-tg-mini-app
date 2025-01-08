@@ -255,7 +255,7 @@ async function getFvStatusInfo(e) {
   showLoader()
   const fvs = await fetchFvStatusInfo('https://ispik.fakturownia.pl/invoices.json?', fvNrInputValue)
   fvs.length === 0
-    ? (fvSearchResults.innerHTML = `<p>Brak wyników dla ${fvNrInputValue}</p>`)
+    ? (fvSearchResults.innerHTML = `<p class="mt-3">Brak wyników dla ${fvNrInputValue}</p>`)
     : fvs.forEach((fv) => {
         const newDiv = createFvStatusCard(fv)
         const firstDiv = fvSearchResults.querySelector('div')
@@ -415,7 +415,7 @@ function createFvStatusCard(res) {
   }
   const status = statuses[res.status] ?? 'Nieznany'
   const newDiv = document.createElement('div')
-  newDiv.classList.add('w-full', 'mb-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-2xl', 'overflow-hidden', 'shadow-lg')
+  newDiv.classList.add('w-full', 'mt-2', 'p-3', 'bg-gradient-to-tr', `from-${colors[0]}-200`, `to-${colors[1]}-50`, `text-${colors[0]}-900`, 'rounded-xl', 'overflow-hidden', 'shadow-lg')
   newDiv.innerHTML = `
     <div class="flex justify-between">
       <div class="flex gap-2 px-2 py-1 items-center bg-${colors[0]}-200 rounded-full">
