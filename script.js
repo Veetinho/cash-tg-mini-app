@@ -400,8 +400,7 @@ function createRefundApplicationCard(data) {
         </svg>
         <p>Faktura VAT</p>
       </div>
-    </a>
-      `
+    </a>`
   return newDiv
 }
 
@@ -455,36 +454,6 @@ function createFvStatusCard(res) {
     </div>`
   return newDiv
 }
-
-// function createFVModalInnerHtml(fileId) {
-//   return `<div
-//       class="relative px-4 rounded-lg shadow-lg h-screen flex flex-col items-center justify-center"
-//     >
-//       <div class="static">
-//         <button
-//           onclick="closeFVModal()"
-//           class="absolute right-0 top-0 p-1 m-3 bg-red-500 text-white rounded-full"
-//         >
-//           <svg
-//             xmlns="http://www.w3.org/2000/svg"
-//             height="30px"
-//             viewBox="0 -960 960 960"
-//             width="30px"
-//             fill="#fff"
-//           >
-//             <path
-//               d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-//             />
-//           </svg>
-//         </button>
-//       </div>
-//       <img
-//         class="overflow-auto"
-//         src="https://drive.google.com/thumbnail?sz=h1000&id=${fileId}"
-//         alt="Faktura"
-//       />
-//     </div>`
-// }
 
 function getCardColorsByStatus(status) {
   if (status.startsWith('Zaakceptowane') || status === 'partial' || status === 'paid') return ['green', 'teal']
