@@ -209,6 +209,32 @@ function showNewRefundModal() {
   )
 }
 
+function showNewFoodModal() {
+  showModal(
+    'Nowy raport o zamówienie obiadów',
+    `<form class="space-y-2" onsubmit="submitNewFood(event)">
+      <div>
+        <label class="block mb-2 font-medium">Data:</label>
+        <input type="date" name="date" class="w-full p-3 border-2 text-center border-blue-300 rounded-xl" required/>
+      </div>
+      <div>
+        <label class="block mb-2 font-medium">Obiekt:</label>
+        <select name="project" class="w-full p-3 border-2 border-blue-300 rounded-xl" required>
+          <option selected disabled value="">Wybierz obiekt</option>
+          <option value="Rutki">Rutki</option>
+          <option value="Stelpe">Stelpe</option>
+          <option value="Osów 2">Osów 2</option>
+        </select>
+      </div>
+      <div>
+        <label class="block mb-2 font-medium">Ilość:</label>
+        <input type="number" min="1" step="1" name="quantity" class="w-full p-3 border-2 border-blue-300 rounded-xl" placeholder="Podaj ilość" required />
+      </div>
+      <button type="submit" class="w-full header-card text-white p-3 rounded-xl">Zatwierdź</button>
+    </form>`
+  )
+}
+
 _('submitFvStatusForm').addEventListener('submit', (e) => getFvStatusInfo(e))
 
 function submitNewApplication(e) {
