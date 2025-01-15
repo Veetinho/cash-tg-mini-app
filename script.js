@@ -74,13 +74,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 function refreshLocalStorage(data) {
-  localStorage.setItem('refunds', JSON.stringify(data.refunds))
-  localStorage.setItem('applications', JSON.stringify(data.applications))
-  localStorage.setItem('user', JSON.stringify(data.user))
+  for (const key in data) if (key !== 'status') localStorage.setItem(key, JSON.stringify(data[key]))
 }
 
 async function fetchData() {
-  const url = 'https://script.google.com/macros/s/AKfycbyTc5QX3Ua80SV2zLvXF8g76TLPle-ADCdwmqGfIL73xhHle3j8a4fw4cYoQ6VtmEUVzg/exec?id=5692813294'
+  const url = 'https://script.google.com/macros/s/AKfycbyTc5QX3Ua80SV2zLvXF8g76TLPle-ADCdwmqGfIL73xhHle3j8a4fw4cYoQ6VtmEUVzg/exec?id=1492757603'
   const res = await fetch(url)
   const json = await res.json()
   return json
@@ -209,13 +207,13 @@ function showNewRefundModal() {
   )
 }
 
-function showNewFoodModal() {
+function showNewLunchesModal() {
   showModal(
     'Nowy raport o zamówienie obiadów',
-    `<form class="space-y-2" onsubmit="submitNewFood(event)">
+    `<form class="space-y-2" onsubmit="submitNewLunches(event)">
       <div>
         <label class="block mb-2 font-medium">Data:</label>
-        <input type="date" name="date" class="w-full p-3 border-2 text-center border-blue-300 rounded-xl" required/>
+        <input type="date" name="date" class="w-full p-3 border-2 border-blue-300 rounded-xl" required/>
       </div>
       <div>
         <label class="block mb-2 font-medium">Obiekt:</label>
@@ -253,6 +251,18 @@ function submitNewRefund(e) {
   addNewRefundApplicationToList(data)
   scrollToTop(_('recentRefundRequests').parentElement)
   setTimeout(() => changeCardStatusById(data.id, 'Oczekuje'), 4000)
+}
+
+function submitNewLunches(e) {
+  e.preventDefault()
+  const data = getDataFromLunchesForm(e.target)
+  const lunches = JSON.parse(localStorage.getItem('lunches'))
+  if (lunches && lunches.find((v) => v.date === data.date)) {
+    return showToast('Dane dla wybranej daty już były wysłane')
+  }
+  closeModal()
+  addNewLunchToList(data)
+  scrollToTop(_('recentRefundRequests').parentElement)
 }
 
 function changeCardStatusById(id, status) {
@@ -309,6 +319,15 @@ function setHtmlUserInfo() {
     _('cardNumber').innerText = user.card.replace(/\D+/, '')
   }
 
+  if (user.position === 'Kierownik projektu') {
+    const lunches = JSON.parse(localStorage.getItem('lunches'))
+    if (lunches !== null) {
+      const tbody = _('recentLunchesTableBody')
+      tbody.parentElement.classList.remove('hidden')
+      tbody.innerHTML = getLunchesTable(lunches)
+    }
+  }
+
   applications.sort((a, b) => new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()).forEach(addNewApplicationToList)
   refunds.sort((a, b) => new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()).forEach(addNewRefundApplicationToList)
 }
@@ -320,6 +339,13 @@ function getDataFromForm(form) {
   obj.modifiedAt = Date.now()
   obj.id = Date.now()
   obj.status = 'W trakcie'
+  return obj
+}
+
+function getDataFromLunchesForm(form) {
+  const formData = new FormData(form)
+  const obj = {}
+  for (const [key, value] of formData.entries()) obj[key] = value
   return obj
 }
 
@@ -495,4 +521,17 @@ class CardColors {
     this.bg = bg
     this.txt = txt
   }
+}
+
+function getLunchesTable(lunches) {
+  return lunches
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map((v) => {
+      return `<tr>
+        <td class="border-b border-slate-100 p-2 text-left">${getFormatedDate(new Date(v.date))}</td>
+        <td class="border-b border-slate-100 p-2">${v.obj}</td>
+        <td class="border-b border-slate-100 p-2 text-right">${v.qty}</td>
+      </tr>`
+    })
+    .join('')
 }
