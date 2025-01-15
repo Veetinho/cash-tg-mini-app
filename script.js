@@ -262,7 +262,7 @@ function submitNewLunches(e) {
   }
   closeModal()
   addNewLunchToList(data)
-  scrollToTop(_('recentRefundRequests').parentElement)
+  scrollToTop(_('recentLunchesRequests').parentElement)
 }
 
 function changeCardStatusById(id, status) {
@@ -357,6 +357,19 @@ function addNewApplicationToList(data) {
 function addNewRefundApplicationToList(data) {
   const recentRefundRequests = _('recentRefundRequests')
   recentRefundRequests.insertBefore(createRefundApplicationCard(data), recentRefundRequests.querySelector('.p-3'))
+}
+
+function addNewLunchToList(data) {
+  const lunches = JSON.parse(localStorage.getItem('lunches')) ?? []
+  const { date, project, quantity } = data
+  lunches.push({
+    date,
+    obj: project,
+    qty: quantity,
+  })
+  const tbody = _('recentLunchesTableBody')
+  tbody.parentElement.classList.remove('hidden')
+  tbody.innerHTML = getLunchesTable(lunches)
 }
 
 function scrollToTop(el) {
