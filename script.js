@@ -5,8 +5,8 @@ const toast = _('toast')
 
 document.addEventListener('DOMContentLoaded', async () => {
   window.Telegram.WebApp.expand()
-  const data = await fetchData()
-  if (data.status == 200) refreshLocalStorage(data)
+  // const data = await fetchData()
+  // if (data.status == 200) refreshLocalStorage(data)
 
   setHtmlUserInfo()
 
@@ -542,8 +542,8 @@ function getLunchesTable(lunches) {
     .map((v) => {
       return `<tr>
         <td class="border-b border-slate-100 p-2 text-left">${getFormatedDate(new Date(v.date))}</td>
-        <td class="border-b border-slate-100 p-2">${v.obj}</td>
-        <td class="border-b border-slate-100 p-2 text-right">${v.qty}</td>
+        <td class="border-b border-slate-100 p-2">${v.project}</td>
+        <td class="border-b border-slate-100 p-2 text-right">${v.quantity}</td>
       </tr>`
     })
     .join('')
