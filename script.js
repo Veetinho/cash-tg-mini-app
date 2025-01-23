@@ -5,8 +5,8 @@ const toast = _('toast')
 
 document.addEventListener('DOMContentLoaded', async () => {
   window.Telegram.WebApp.expand()
-  // const data = await fetchData()
-  // if (data.status == 200) refreshLocalStorage(data)
+  const data = await fetchData()
+  if (data.status == 200) refreshLocalStorage(data)
 
   setHtmlUserInfo()
 
